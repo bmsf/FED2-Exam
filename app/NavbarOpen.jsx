@@ -1,5 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { VscAccount } from 'react-icons/vsc';
+import {
+	IoLogOutOutline,
+	IoHomeOutline,
+	IoSearchOutline,
+} from 'react-icons/io5';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+import Logo from '../public/logo-no-background.png';
 
 export default function NavbarOpen({ isOpen, setIsOpen }) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -57,47 +68,71 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 					exit='hidden'
 					variants={containerVariants}
 					// ... other props
+					className='flex flex-col justify-center items-center py-10 gap-10'
 				>
+					<div className='border-b w-full flex justify-center items-center p-4'>
+						<Image
+							src={Logo}
+							className='object-contain w-8 h-8'
+							alt='Holidaze Logo'
+						/>
+					</div>
+					<div className='flex flex-col gap-4 text-center w-full'>
+						{['Home', 'Search', 'About', 'Contact'].map((item) => (
+							<Link href={'/'} key={item}>
+								<ul>
+									<li className='cursor-pointer hover:bg-gray-100 rounded px-4 py-2'>
+										<div className='flex gap-2 items-center'>
+											<p>{item}</p>
+										</div>
+									</li>
+								</ul>
+							</Link>
+						))}
+					</div>
 					{isLoggedIn ? (
-						<motion.div variants={containerVariants} className='space-y-4'>
-							<motion.a
-								variants={itemVariants}
-								href='/my-bookings'
-								className='block py-2 px-4'
-							>
-								My Bookings
-							</motion.a>
-							<motion.a
-								variants={itemVariants}
-								href='/my-profile'
-								className='block py-2 px-4'
-							>
-								My Profile
-							</motion.a>
-							<motion.a
-								variants={itemVariants}
-								href='/logout'
-								className='block py-2 px-4'
-							>
-								Logout
-							</motion.a>
-						</motion.div>
+						<>
+							<ul className='flex flex-col gap-4 p-6 w-full justify-center items-center text-grey'>
+								{/* Menu Items Section */}
+
+								<Link href={'/'}>
+									<li className='cursor-pointer hover:bg-gray-100 rounded px-4 py-2'>
+										<div className='flex gap-2 items-center'>
+											<p>Logout</p>
+										</div>
+									</li>
+								</Link>
+							</ul>
+						</>
 					) : (
-						<motion.div variants={containerVariants} className='space-y-4'>
-							<motion.a
+						<motion.div
+							variants={containerVariants}
+							className='space-y-4 flex flex-col items-center'
+						>
+							<motion.Link
 								variants={itemVariants}
 								href='/login'
-								className='block py-2 px-4'
+								className='block'
 							>
-								Login
-							</motion.a>
-							<motion.a
+								<button
+									type='button'
+									className='flex items-center justify-center bg-white text-primary rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
+								>
+									<span>Login</span>
+								</button>
+							</motion.Link>
+							<motion.Link
 								variants={itemVariants}
-								href='/register'
-								className='block py-2 px-4'
+								href='/login'
+								className='block'
 							>
-								Register
-							</motion.a>
+								<button
+									type='button'
+									className='flex items-center justify-center bg-primary text-white rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
+								>
+									<span>Register</span>
+								</button>
+							</motion.Link>
 						</motion.div>
 					)}
 				</motion.div>
