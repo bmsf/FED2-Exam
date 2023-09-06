@@ -13,6 +13,7 @@ module.exports = {
 			lightestPrimary: '#272727',
 			grey: '#9f9f9f',
 			white: '#F4F4F4',
+			error: '#C84949',
 		},
 	},
 	plugins: [],
