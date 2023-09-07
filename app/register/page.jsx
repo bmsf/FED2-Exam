@@ -44,13 +44,13 @@ function RegisterPage() {
 	return (
 		<>
 			<main>
-				<div className='bg-lightPrimary flex flex-col justify-center items-center py-10 gap-5'>
+				<div className='bg-primaryflex flex-col justify-center items-center py-10 gap-5'>
 					<h1 className='text-xl'>Sign Up</h1>
 					<form
 						className='flex flex-col w-full lg:w-2/3 space-y-4 md:space-y-6'
 						onSubmit={onSubmit}
 					>
-						<div className='flex flex-col bg-lightPrimary mx-10'>
+						<div className='flex flex-col mx-10'>
 							<label className='mb-2 text-sm font-medium'>Name</label>
 							<div className='relative'>
 								<UserIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />
@@ -67,7 +67,7 @@ function RegisterPage() {
 								/>
 							</div>
 						</div>
-						<div className='flex flex-col bg-lightPrimary mx-10'>
+						<div className='flex flex-col mx-10'>
 							<label className='mb-2 text-sm font-medium'>Email</label>
 							<div className='relative '>
 								<EnvelopeIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />
@@ -83,7 +83,7 @@ function RegisterPage() {
 								/>
 							</div>
 						</div>
-						<div className='flex flex-col bg-lightPrimary mx-10'>
+						<div className='flex flex-col mx-10'>
 							<label className='mb-2 text-sm font-medium'>
 								Avatar(optional)
 							</label>
@@ -100,7 +100,7 @@ function RegisterPage() {
 								/>
 							</div>
 						</div>
-						<div className='flex flex-col bg-lightPrimary mx-10'>
+						<div className='flex flex-col  mx-10'>
 							<label className='mb-2 text-sm font-medium'>Password</label>
 							<div className='relative'>
 								<LockClosedIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />

@@ -17,7 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<body className={`${openSans.className} bg-primary text-[#f5f5f5]`}>
+			<body
+				className={`${openSans.className} flex flex-col justify-between min-h-screen bg-primary text-[#f5f5f5]`}
+			>
 				<Navbar />
 				{children}
 				<Footer />

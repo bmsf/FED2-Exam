@@ -109,30 +109,26 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 							variants={containerVariants}
 							className='space-y-4 flex flex-col items-center'
 						>
-							<motion.Link
-								variants={itemVariants}
-								href='/login'
-								className='block'
-							>
-								<button
-									type='button'
-									className='flex items-center justify-center bg-white text-primary rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
-								>
-									<span>Login</span>
-								</button>
-							</motion.Link>
-							<motion.Link
-								variants={itemVariants}
-								href='/login'
-								className='block'
-							>
-								<button
-									type='button'
-									className='flex items-center justify-center bg-primary text-white rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
-								>
-									<span>Register</span>
-								</button>
-							</motion.Link>
+							<Link href={'/login'}>
+								<motion.div variants={itemVariants} className='block'>
+									<button
+										type='button'
+										className='flex items-center justify-center bg-white text-primary rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
+									>
+										<span>Login</span>
+									</button>
+								</motion.div>
+							</Link>
+							<Link href={'/register'}>
+								<motion.div variants={itemVariants} className='block'>
+									<button
+										type='button'
+										className='flex items-center justify-center bg-primary text-white rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
+									>
+										<span>Register</span>
+									</button>
+								</motion.div>
+							</Link>
 						</motion.div>
 					)}
 				</motion.div>

@@ -30,7 +30,7 @@ const Footer = () => {
 				<hr className='my-4 border-gray-600' />
 				<div className='flex justify-between items-center'>
 					<p>
-						&copy; {new Date().getFullYear()} AccommoStay. All rights reserved.
+						&copy; {new Date().getFullYear()} Holidaze. All rights reserved.
 					</p>
 					<div className='flex space-x-4'>
 						<a
