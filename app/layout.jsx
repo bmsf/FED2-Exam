@@ -1,3 +1,6 @@
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 import Navbar from './Navbar';
 import Footer from './Footer';
 import './globals.css';
@@ -22,7 +25,8 @@ export default function RootLayout({ children }) {
 			>
 				<Navbar />
 				{children}
-				<Footer />
+				{/* <Footer /> */}
+				<ToastContainer />
 			</body>
 		</html>
 	);

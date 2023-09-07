@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
 import {
 	EyeIcon,
 	LockClosedIcon,
@@ -8,13 +7,10 @@ import {
 	EnvelopeIcon,
 	PhotoIcon,
 } from '@heroicons/react/24/outline';
+import { toast } from 'react-toastify';
 
-/**
-
-A React functional component for user registration form.
-@component
-@return {JSX.Element}
-*/
+import Link from 'next/link';
+import registerAuth from '../api/auth/registerAuth';
 
 function RegisterPage() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -23,87 +19,81 @@ function RegisterPage() {
 		email: '',
 		avatar: '',
 		password: '',
-		vanueManager: false,
+		venueManager: false,
 	});
 
-	const { name, email, password, avatar } = formData;
+	const { name, email, password, avatar, venueManager } = formData;
 
 	const onChange = (e) => {
+		const { id, value, type, checked } = e.target;
 		setFormData((prevState) => ({
 			...prevState,
-			[e.target.id]: e.target.value,
+			[id]: type === 'checkbox' ? checked : value,
 		}));
 	};
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-
-		console.log(formData);
+		registerAuth(formData);
 	};
 
 	return (
 		<>
-			<main>
-				<div className='bg-primaryflex flex-col justify-center items-center py-10 gap-5'>
-					<h1 className='text-xl'>Sign Up</h1>
+			<div className=' flex flex-col justify-center'>
+				<div className='flex flex-col items-center py-10 gap-5'>
+					<h1 className='text-4xl mb-8 self-start mx-10'>Sign Up</h1>
 					<form
 						className='flex flex-col w-full lg:w-2/3 space-y-4 md:space-y-6'
 						onSubmit={onSubmit}
 					>
 						<div className='flex flex-col mx-10'>
-							<label className='mb-2 text-sm font-medium'>Name</label>
 							<div className='relative'>
-								<UserIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />
+								<UserIcon className='absolute h-4 w-4 cursor-pointer top-5 left-3' />
 								<input
 									id='name'
-									className='rounded-lg w-full py-4 px-4 bg-transparent pl-8 bg-lightestPrimary'
+									className='rounded-lg w-full p-4 bg-transparent pl-8 bg-lightestPrimary'
 									value={name}
 									onChange={onChange}
 									required
 									pattern='^[\w]+$'
 									maxLength='20'
-									placeholder='jon_doe'
+									placeholder='Name'
 									title='Name can maximum contain 20 letters and no numbers. The name value must not contain punctuation symbols apart from underscore'
 								/>
 							</div>
 						</div>
 						<div className='flex flex-col mx-10'>
-							<label className='mb-2 text-sm font-medium'>Email</label>
 							<div className='relative '>
-								<EnvelopeIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />
+								<EnvelopeIcon className='absolute h-4 w-4 cursor-pointer top-5 left-3' />
 								<input
 									id='email'
-									className='pl-10  w-full rounded-lg py-4 px-4  bg-lightestPrimary'
+									className='pl-10  w-full rounded-lg  p-4 bg-lightestPrimary'
 									value={email}
 									onChange={onChange}
 									required
-									placeholder='jondoe@stud.noroff.no'
+									placeholder='E-mail(@stud.noroff)'
 									pattern='^[\w\-.]+@(stud.)?noroff.no$'
 									title='Email must be associated with a noroff email. @noroff.no or @stud.noroff.no'
 								/>
 							</div>
 						</div>
 						<div className='flex flex-col mx-10'>
-							<label className='mb-2 text-sm font-medium'>
-								Avatar(optional)
-							</label>
 							<div className='relative '>
-								<PhotoIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />
+								<PhotoIcon className='absolute h-4 w-4 cursor-pointer top-5 left-3' />
 								<input
 									id='avatar'
 									className='pl-10  w-full rounded-lg py-4 px-4  bg-lightestPrimary'
 									value={avatar}
 									onChange={onChange}
-									placeholder='"https://url.com/image.jpg"'
+									placeholder='Avatar(optional)'
 									pattern='^[\w]+$'
 									title='Name can maximum contain 20 letters and no numbers'
 								/>
 							</div>
 						</div>
 						<div className='flex flex-col  mx-10'>
-							<label className='mb-2 text-sm font-medium'>Password</label>
 							<div className='relative'>
-								<LockClosedIcon className='absolute h-4 w-4 cursor-pointer top-4 left-3' />
+								<LockClosedIcon className='absolute h-4 w-4 cursor-pointer top-5 left-3' />
 								<input
 									id='password'
 									type={showPassword ? 'text' : 'password'}
@@ -111,7 +101,7 @@ function RegisterPage() {
 									value={password}
 									onChange={onChange}
 									required
-									placeholder='********'
+									placeholder='Password'
 									minLength='8'
 									title='Password has a minimum length of 8 characters'
 								/>
@@ -120,6 +110,18 @@ function RegisterPage() {
 									onClick={() => setShowPassword((prevState) => !prevState)}
 								/>
 							</div>
+
+							<div className='flex items-center my-2'>
+								<input
+									type='checkbox'
+									id='venueManager'
+									checked={venueManager}
+									onChange={onChange}
+								/>
+								<label className='ml-2' htmlFor='venueManager'>
+									Register as a venue manager
+								</label>
+							</div>
 						</div>
 						<button
 							type='submit'
@@ -127,15 +129,15 @@ function RegisterPage() {
 						>
 							<span>Next</span>
 						</button>
-						<p className=''>
-							Already have an account?{' '}
-							<Link href={'/login'} className='font-extrabold'>
-								Login
-							</Link>
-						</p>
 					</form>
 				</div>
-			</main>
+				<div className='text-center w-full'>
+					Already have an account?
+					<Link href={'/login'}>
+						<span className='font-extrabold pl-2'>Login</span>
+					</Link>
+				</div>
+			</div>
 		</>
 	);
 }
