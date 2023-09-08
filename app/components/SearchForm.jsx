@@ -35,14 +35,14 @@ const SearchForm = () => {
 	const [errors, setErrors] = useState({});
 
 	return (
-		<form className='w-full px-6 mb-20' onSubmit={handleSubmit}>
+		<form className='w-full px-6 mb-44' onSubmit={handleSubmit}>
 			<h2>Select your destination</h2>
 			<div className='w-full flex flex-col gap-2'>
 				<div className='flex items-center relative rounded-md'>
 					<FaSearch className='absolute left-4 top-1/2 transform -translate-y-1/2' />
 					<input
 						placeholder='Venue'
-						className='rounded-lg w-full py-4 px-4 bg-inherit pl-12 bg-lightestPrimary'
+						className='rounded-md w-full py-4 px-4 bg-inherit pl-12 bg-lightestPrimary'
 						onChange={(e) => setVenue(e.target.value)}
 					/>
 				</div>

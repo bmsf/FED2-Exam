@@ -1,5 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
+import VenueCard from '../components/VenueCard';
 
 const RenderResults = ({ venues }) => {
 	const searchParams = useSearchParams();
@@ -24,13 +25,11 @@ const RenderResults = ({ venues }) => {
 	});
 
 	return (
-		<div>
+		<div className='m-12 rounded-md grid grid-cols-4 gap-12'>
 			{filteredVenues.length > 0 ? (
 				filteredVenues.map((venue) => (
-					<div key={venue.id}>
-						<h2>{venue.name}</h2>
-						<p>{venue.description}</p>
-						{/* Render other venue details as needed */}
+					<div className='col-span-4 md:col-span-2 lg:col-span-1 bg-lightestPrimary rounded-md'>
+						<VenueCard key={venue.name} venue={venue} />
 					</div>
 				))
 			) : (

@@ -80,7 +80,7 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 					<div className='flex flex-col gap-4 text-center w-full'>
 						{['Home', 'Search', 'About', 'Contact'].map((item) => (
 							<Link href={'/'} key={item}>
-								<ul>
+								<ul onClick={() => setIsOpen(false)}>
 									<li className='cursor-pointer hover:bg-gray-100 rounded px-4 py-2'>
 										<div className='flex gap-2 items-center'>
 											<p>{item}</p>
@@ -92,9 +92,10 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 					</div>
 					{isLoggedIn ? (
 						<>
-							<ul className='flex flex-col gap-4 p-6 w-full justify-center items-center text-grey'>
-								{/* Menu Items Section */}
-
+							<ul
+								onClick={() => setIsOpen(false)}
+								className='flex flex-col gap-4 p-6 w-full justify-center items-center text-grey'
+							>
 								<Link href={'/'}>
 									<li className='cursor-pointer hover:bg-gray-100 rounded px-4 py-2'>
 										<div className='flex gap-2 items-center'>
@@ -108,6 +109,7 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 						<motion.div
 							variants={containerVariants}
 							className='space-y-4 flex flex-col items-center'
+							onClick={() => setIsOpen(false)}
 						>
 							<Link href={'/login'}>
 								<motion.div variants={itemVariants} className='block'>

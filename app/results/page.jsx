@@ -6,6 +6,7 @@ const SearchResults = async () => {
 
 	return (
 		<div>
+			<h1 className='my-16 text-3xl'>Search results:</h1>
 			<RenderResult venues={venues} />
 		</div>
 	);
