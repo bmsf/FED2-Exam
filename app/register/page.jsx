@@ -51,7 +51,7 @@ function RegisterPage() {
 								<UserIcon className='absolute h-4 w-4 cursor-pointer top-5 left-3' />
 								<input
 									id='name'
-									className='rounded-lg w-full p-4 bg-transparent pl-8 bg-lightestPrimary'
+									className='rounded-lg w-full p-4 pl-8 bg-lightestPrimary'
 									value={name}
 									onChange={onChange}
 									required
@@ -82,7 +82,7 @@ function RegisterPage() {
 								<PhotoIcon className='absolute h-4 w-4 cursor-pointer top-5 left-3' />
 								<input
 									id='avatar'
-									className='pl-10  w-full rounded-lg py-4 px-4  bg-lightestPrimary'
+									className='pl-10  w-full rounded-lg py-4 px-4 bg-lightestPrimary'
 									value={avatar}
 									onChange={onChange}
 									placeholder='Avatar(optional)'

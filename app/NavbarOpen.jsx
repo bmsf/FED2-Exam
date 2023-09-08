@@ -1,5 +1,7 @@
+'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import * as storage from './api/storage';
 import { VscAccount } from 'react-icons/vsc';
 import {
 	IoLogOutOutline,
@@ -77,7 +79,7 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 							alt='Holidaze Logo'
 						/>
 					</div>
-					<div className='flex flex-col gap-4 text-center w-full'>
+					<div className='flex flex-col gap-4 text-center w-full border-b pb-6'>
 						{['Home', 'Search', 'About', 'Contact'].map((item) => (
 							<Link href={'/'} key={item}>
 								<ul onClick={() => setIsOpen(false)}>

@@ -4,6 +4,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import './globals.css';
+import * as storage from './api/storage';
+
 import { Inter, Open_Sans, Playfair_Display } from 'next/font/google';
 
 export const playfair = Playfair_Display({
