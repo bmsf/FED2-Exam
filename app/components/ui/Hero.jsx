@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import Logo from '../public/logo-no-background.png';
-import SearchForm from './components/SearchForm';
+import Logo from '../../../public/logo-no-background.png';
+import SearchForm from '../SearchForm';
 
 const Hero = () => {
 	return (

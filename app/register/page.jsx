@@ -133,7 +133,7 @@ function RegisterPage() {
 				</div>
 				<div className='text-center w-full'>
 					Already have an account?
-					<Link href={'/login'}>
+					<Link href={'/api/auth/login'}>
 						<span className='font-extrabold pl-2'>Login</span>
 					</Link>
 				</div>

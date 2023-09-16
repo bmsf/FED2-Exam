@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 function VenueCard({ venue }) {
 	return (
-		<Link href={`/venues/${venue.id}`}>
+		<Link href={`/venue/${venue.id}`}>
 			<div className='bg-lightestPrimary rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300'>
 				<div className='relative aspect-video overflow-hidden rounded-t-md'>
 					<img

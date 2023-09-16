@@ -1,4 +1,4 @@
-import VenueCard from './components/VenueCard';
+import VenueCard from '../VenueCard';
 
 const fetchVenues = async () => {
 	const response = await fetch('https://api.noroff.dev/api/v1/holidaze/venues');
