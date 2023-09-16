@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import * as storage from './api/storage';
+import { useSession, signOut, signIn } from 'next-auth/react';
+
 import { VscAccount } from 'react-icons/vsc';
 import {
 	IoLogOutOutline,
@@ -39,6 +40,10 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 		hidden: { x: -100, opacity: 0 },
 		visible: { x: 0, opacity: 1 },
 	};
+
+	const { data: session } = useSession();
+
+	console.log(session);
 
 	return (
 		<motion.div
@@ -92,19 +97,20 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 							</Link>
 						))}
 					</div>
-					{isLoggedIn ? (
+					{session && session.user ? (
 						<>
 							<ul
 								onClick={() => setIsOpen(false)}
 								className='flex flex-col gap-4 p-6 w-full justify-center items-center text-grey'
 							>
-								<Link href={'/'}>
-									<li className='cursor-pointer hover:bg-gray-100 rounded px-4 py-2'>
-										<div className='flex gap-2 items-center'>
-											<p>Logout</p>
-										</div>
-									</li>
-								</Link>
+								<button
+									className='cursor-pointer text-black bg-white  rounded px-4 py-2'
+									onClick={() => signOut()}
+								>
+									<div className='flex gap-2 items-center'>
+										<p>Logout</p>
+									</div>
+								</button>
 							</ul>
 						</>
 					) : (
@@ -113,16 +119,16 @@ export default function NavbarOpen({ isOpen, setIsOpen }) {
 							className='space-y-4 flex flex-col items-center'
 							onClick={() => setIsOpen(false)}
 						>
-							<Link href={'/login'}>
-								<motion.div variants={itemVariants} className='block'>
-									<button
-										type='button'
-										className='flex items-center justify-center bg-white text-primary rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
-									>
-										<span>Login</span>
-									</button>
-								</motion.div>
-							</Link>
+							<motion.div variants={itemVariants} className='block'>
+								<button
+									onClick={() => signIn()}
+									type='button'
+									className='flex items-center justify-center bg-white text-primary rounded-xl py-2.5 w-32 text-xs font-medium transition-transform duration-150 ease-in-out hover:bg-gray-200 active:scale-95'
+								>
+									<span>Login</span>
+								</button>
+							</motion.div>
+
 							<Link href={'/register'}>
 								<motion.div variants={itemVariants} className='block'>
 									<button

@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { API_AUCTION_URL } from '../constants';
+import { API_HOLIDAZE_URL } from '../constants';
 const action = '/auth/register';
 const method = 'post';
 
@@ -15,9 +15,11 @@ const method = 'post';
  */
 
 const registerAuth = async (formData) => {
-	const registerURL = API_AUCTION_URL + action;
+	const registerURL = API_HOLIDAZE_URL + action;
 
 	const body = JSON.stringify(formData);
+
+	console.log(body);
 
 	try {
 		const response = await fetch(registerURL, {

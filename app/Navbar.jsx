@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../public/logo-no-background.png';
 import NavbarOpen from './NavbarOpen';
+import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Navbar() {
 	const toggleNavbar = () => {
 		setIsOpen(!isOpen);
 	};
+
 	return (
 		<nav className='flex justify-between items-center p-4 w-full bg-lightPrimary'>
 			<Link href={'/'}>
@@ -34,10 +36,4 @@ export default function Navbar() {
 			</div>
 		</nav>
 	);
-}
-{
-	/* <div className='flex text-white'>
-					<UserIcon className='h-6 w-6 ' />
-					<p>Login</p>
-				</div> */
 }

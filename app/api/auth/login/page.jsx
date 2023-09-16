@@ -1,9 +1,10 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { EyeIcon, LockClosedIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-import loginAuth from '../api/auth/loginAuth';
+import { signIn } from 'next-auth/react';
+import { toast } from 'react-toastify';
 
 /**
  * Login component that handles user login.
@@ -12,24 +13,25 @@ import loginAuth from '../api/auth/loginAuth';
  */
 
 const Login = () => {
-	const [showPassword, setShowPassword] = useState(false);
-	const [formData, setFormData] = useState({
-		email: '',
-		password: '',
-	});
-
-	const { email, password } = formData;
-
-	const onChange = (e) => {
-		setFormData((prevState) => ({
-			...prevState,
-			[e.target.id]: e.target.value,
-		}));
-	};
+	const email = useRef('');
+	const pass = useRef('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		loginAuth(formData);
+		const result = await signIn('credentials', {
+			email: email.current,
+			password: pass.current,
+			redirect: false,
+			// callbackUrl: 'http://localhost:3000/',
+		});
+
+		console.log(result);
+
+		// if (!result?.error) {
+		// 	toast.error('Wrong credentials. Please try again');
+		// } else {
+		// 	console.log('this is success', result, result.error);
+		// }
 	};
 
 	return (
@@ -48,8 +50,7 @@ const Login = () => {
 							<input
 								id='email'
 								className='bg-lightestPrimary pl-10 w-full rounded-lg  p-4 '
-								value={email}
-								onChange={onChange}
+								onChange={(e) => (email.current = e.target.value)}
 								required
 								placeholder='E-mail'
 								pattern='^[\w\-.]+@(stud.)?noroff.no$'
@@ -62,18 +63,13 @@ const Login = () => {
 							<LockClosedIcon className='absolute  h-4 w-4 cursor-pointer top-5 left-3' />
 							<input
 								id='password'
-								type={showPassword ? 'text' : 'password'}
+								type='password'
 								className='pl-10 bg-lightestPrimary  w-full rounded-lg  p-4 text-black'
-								value={password}
-								onChange={onChange}
+								onChange={(e) => (pass.current = e.target.value)}
 								required
 								placeholder='Password'
 								minLength='8'
 								title='Password has a minimum length of 8 characters'
-							/>
-							<EyeIcon
-								className='absolute h-4 w-4 cursor-pointer top-5 right-3'
-								onClick={() => setShowPassword((prevState) => !prevState)}
 							/>
 						</div>
 					</div>
