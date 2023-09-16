@@ -34,7 +34,8 @@ export const authOptions = {
 						return user;
 					} else {
 						console.log(Error);
-						throw new Error('invalid credentials');
+						// throw new Error('invalid credentials');
+						return null;
 					}
 				} catch (error) {
 					throw new Error('invalid credentials');

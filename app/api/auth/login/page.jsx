@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { EyeIcon, LockClosedIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -13,6 +14,7 @@ import { toast } from 'react-toastify';
  */
 
 const Login = () => {
+	const router = useRouter();
 	const email = useRef('');
 	const pass = useRef('');
 
@@ -22,16 +24,15 @@ const Login = () => {
 			email: email.current,
 			password: pass.current,
 			redirect: false,
-			// callbackUrl: 'http://localhost:3000/',
 		});
 
-		console.log(result);
-
-		// if (!result?.error) {
-		// 	toast.error('Wrong credentials. Please try again');
-		// } else {
-		// 	console.log('this is success', result, result.error);
-		// }
+		if (result && !result.error) {
+			// toast.success('Welcome back!');
+			router.push('/');
+		} else {
+			// Handle authentication error, for example, display a toast message
+			toast.error('Wrong credentials. Please try again');
+		}
 	};
 
 	return (
