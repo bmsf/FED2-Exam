@@ -45,10 +45,10 @@ const Account = async ({ params: { id } }) => {
 				<div className='mt-6'>
 					<h2 className='text-lg font-semibold'>Bookings</h2>
 					<p>{bookings}</p>
-					{bookings > 0 ? (
+					{bookings >= 0 ? (
 						<div className='mt-2'>
 							<Link
-								href='/upcoming-bookings'
+								href={`/account/${name}/my-bookings`}
 								className='text-white flex items-center'
 							>
 								<span className='mr-1 border-b border-dotted border-white'>
