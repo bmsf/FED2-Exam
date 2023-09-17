@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
 
 const AuthButtons = () => (
 	<div className='space-y-4 flex flex-col items-center'>

@@ -1,3 +1,5 @@
+import { signOut } from 'next-auth/react';
+
 const LogoutButton = () => {
 	const handleLogout = async () => {
 		await signOut();
