@@ -24,18 +24,15 @@ const MyBookings = async ({ params: { id } }) => {
 
 	return (
 		<div className='flex flex-col h-full'>
-			{/* Header */}
 			<div className='flex items-center justify-between border-b border-gray-300 pb-2'>
 				<h1 className='text-xl p-8'>My Bookings</h1>
 			</div>
 
-			{/* Content */}
 			<div className='flex-grow'>
 				{res.length > 0 ? (
-					// Render booking cards here if there are bookings
 					<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4'>
 						{res.map((booking) => (
-							<VenueCard key={booking.id} booking={booking} />
+							<VenueCard key={booking.id} venue={booking} />
 						))}
 					</div>
 				) : (

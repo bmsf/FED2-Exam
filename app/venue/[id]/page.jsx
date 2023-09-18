@@ -8,7 +8,7 @@ const Venues = async ({ params: { id } }) => {
 	const res = await data.json();
 
 	return (
-		<div className='bg-lightestPrimary w-full'>
+		<div className=''>
 			<VenueDetails venue={res} />
 		</div>
 	);
