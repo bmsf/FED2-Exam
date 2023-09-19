@@ -21,8 +21,8 @@ module.exports = {
 				lightPrimary: '#1E1E1E',
 				lightestPrimary: '#272727',
 				texas: '#C05D25',
-				grey: '#9f9f9f',
-				white: '#F4F4F4',
+				text: '#D4D1CC',
+				white: '#F5F5F5',
 				error: '#C84949',
 			},
 			// borderRadius: {

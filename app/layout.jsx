@@ -6,12 +6,9 @@ import Footer from './components/layout/Footer';
 import './globals.css';
 import Provider from './components/Provider';
 
-import { Inter, Open_Sans, Playfair_Display } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 
-export const playfair = Playfair_Display({
-	subsets: ['latin'],
-});
-const openSans = Inter({ subsets: ['latin'] });
+const openSans = Rubik({ subsets: ['latin'] });
 
 export const metadata = {
 	title: 'Holidaze - Premier Accommodations & Vacation Rentals',
