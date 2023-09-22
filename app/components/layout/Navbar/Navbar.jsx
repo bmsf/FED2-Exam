@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { HiOutlineMenuAlt3, HiOutlineSearch } from 'react-icons/hi';
 import Lottie from 'lottie-react';
 
 import Link from 'next/link';
@@ -21,6 +21,8 @@ export default function Navbar() {
 	const style = {
 		// height: '60px',
 		// width: '60px',
+		// margin: '-10px',
+
 		backgroundColor: 'white',
 	};
 
@@ -34,13 +36,15 @@ export default function Navbar() {
 				/>
 			</Link>
 			<div className='flex'>
-				{/* <Lottie
-					animationData={searchIcon} // Your Lottie animation JSON data
-					loop={false} // Set to true if you want it to loop
-					autoplay={true} // Set to true if you want it to start playing immediately
-					style={style} // Adjust size as needed
-				/> */}
-
+				{/* <div className='w-1/5'>
+					<Lottie
+						animationData={searchIcon} // Your Lottie animation JSON data
+						loop={false} // Set to true if you want it to loop
+						autoplay={true} // Set to true if you want it to start playing immediately
+						style={style} // Adjust size as needed
+					/>
+				</div> */}
+				<HiOutlineSearch className='h-6 w-6 cursor-pointer active:scale-95 transform transition' />
 				<HiOutlineMenuAlt3
 					className='h-6 w-6 cursor-pointer active:scale-95 transform transition'
 					onClick={toggleNavbar}

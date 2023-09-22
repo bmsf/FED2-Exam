@@ -1,21 +1,21 @@
 import Link from 'next/link';
 
 const NavigationLinks = ({ setIsOpen, session }) => {
-	const { venueManager, name } = session || {};
+	const { venueManager, name, jti } = session || {};
 
 	console.log(session);
 
 	const userLinks = [
 		{ title: 'Home', path: '/' },
 		{ title: 'Search', path: '/search' },
-		{ title: 'My Bookings', path: '/bookings' },
-		{ title: 'Account', path: `/account/${name}` },
+		{ title: 'My Bookings', path: `/account/${jti}/my-bookings` },
+		{ title: 'Account', path: `account/${name}` },
 	];
 
 	const adminLinks = [
-		{ title: 'Dashboard', path: '/admin/dashboard' },
-		{ title: 'Manage Venues', path: '/admin/venues' },
-		{ title: 'Manage Bookings', path: '/admin/bookings' },
+		{ title: 'Account', path: '/account' },
+		{ title: 'Manage Venues', path: '/profile/venues' },
+		// { title: 'Manage Bookings', path: '/admin/bookings' },
 	];
 
 	const links = venueManager ? adminLinks : userLinks;

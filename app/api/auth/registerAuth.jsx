@@ -31,7 +31,7 @@ const registerAuth = async (formData) => {
 		});
 		if (response.ok) {
 			toast.success('Account created successfully!🔥', {
-				onClose: () => window.location.replace('/login'),
+				onClose: () => window.location.replace('/api/auth/login'),
 			});
 		} else {
 			const errorResponse = await response.json();

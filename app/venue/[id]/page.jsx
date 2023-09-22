@@ -8,7 +8,7 @@ const Venues = async ({ params: { id } }) => {
 	const res = await data.json();
 
 	return (
-		<div className='p-6 text-white'>
+		<div className=''>
 			<VenueDetails venue={res} />
 			<CalendarBooking venue={res} />
 		</div>

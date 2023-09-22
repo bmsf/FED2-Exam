@@ -18,6 +18,12 @@
 	height: 100vh;
 }
 
+.disabled-date {
+	background-color: #ccc; /* Change to your desired styling */
+	color: #999; /* Change to your desired styling */
+	cursor: not-allowed;
+}
+
 /* @layer base {
   :root {
     --background: 0 0% 100%;
