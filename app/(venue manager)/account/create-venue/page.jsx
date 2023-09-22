@@ -17,6 +17,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 
 import { useForm } from 'react-hook-form';
+import { useSession } from 'next-auth/react';
+import createVenue from '@/app/api/auth/createVenue';
 
 const items = [
 	{
@@ -41,11 +43,11 @@ const formSchema = z.object({
 	name: z.string().min(2, {
 		message: 'Venue name must be at least 2 characters.',
 	}),
-	price: z.string().min(2, {
-		message: 'String name must be at least 2 characters.',
+	price: z.coerce.number().positive({
+		message: 'Price must be a number above 0',
 	}),
-	maxGuests: z.string().min(2, {
-		message: 'String name must be at least 2 characters.',
+	maxGuests: z.coerce.number().positive({
+		message: 'Price must be a number above 0',
 	}),
 	description: z.string().min(2, {
 		message: 'Description name must be at least 2 characters.',
@@ -68,6 +70,8 @@ const formSchema = z.object({
 });
 
 export function ProfileForm() {
+	const { data: session } = useSession();
+
 	// 1. Define your form.
 	const form = useForm({
 		resolver: zodResolver(formSchema),
@@ -77,25 +81,23 @@ export function ProfileForm() {
 			price: '',
 			maxGuests: '',
 			items: [],
+			country: '',
+			address: '',
+			city: '',
+			zip: '',
 		},
 	});
 
 	// 2. Define a submit handler.
-	function onSubmit(values) {
+	async function onSubmit(values, e) {
 		// Do something with the form values.
-		console.log(values);
 
-		const {
-			address,
-			city,
-			zip,
-			country,
-			name,
-			description,
-			price,
-			maxGuests,
-			items,
-		} = values;
+		
+		e.preventDefault();
+		const { address, city, zip, country, name, description, items } = values;
+
+		const price = Number(values.price);
+		const maxGuests = Number(values.maxGuests);
 
 		const meta = { wifi: false, parking: false, breakfast: false, pets: false };
 
@@ -117,7 +119,8 @@ export function ProfileForm() {
 			},
 		};
 
-		console.log(formattedValues);
+		createVenue(formattedValues, session.accessToken);
+		
 	}
 
 	return (
@@ -131,7 +134,7 @@ export function ProfileForm() {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder='Venue name' {...field} />
+									<Input placeholder='Name' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -144,7 +147,7 @@ export function ProfileForm() {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder='Price' {...field} />
+									<Input type={'number'} placeholder='Price' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -156,7 +159,11 @@ export function ProfileForm() {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder='Maximum Guests' {...field} />
+									<Input
+										type={'number'}
+										placeholder='Maximum Guests'
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
