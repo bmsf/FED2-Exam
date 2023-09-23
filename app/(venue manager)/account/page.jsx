@@ -5,6 +5,7 @@ import { MdAdd } from 'react-icons/md';
 import Link from 'next/link'; // Import Link from Next.js
 import AvatarEditor from './AvatarEditor';
 import { Button } from '@/components/ui/button';
+import MyVenuesSection from './MyVenuesSection';
 
 const Account = async ({ params: { id } }) => {
 	const session = await getServerSession(authOptions);
@@ -14,7 +15,7 @@ const Account = async ({ params: { id } }) => {
 	const { name, email, avatar, venueManager } = session;
 
 	const data = await fetch(
-		`https://api.noroff.dev/api/v1/holidaze/profiles/venuemanager`,
+		`https://api.noroff.dev/api/v1/holidaze/profiles/${name}`,
 		{
 			method: 'GET',
 			headers: {
@@ -30,8 +31,6 @@ const Account = async ({ params: { id } }) => {
 		_count: { bookings, venues },
 	} = res;
 
-	console.log(venues);
-
 	return (
 		<>
 			<section className='p-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
@@ -44,9 +43,9 @@ const Account = async ({ params: { id } }) => {
 				</div>
 			</section>
 			{venues ? (
-				<div>venues</div>
+				<MyVenuesSection name={name} accessToken={accessToken} />
 			) : (
-				<div className='min-h-screen flex flex-col items-center'>
+				<section className='min-h-screen flex flex-col items-center'>
 					<section className='mt-12'>
 						<div className='flex flex-col items-center'>
 							<FaHouse className='text-text h-12 w-12 mb-3' />
@@ -56,7 +55,7 @@ const Account = async ({ params: { id } }) => {
 							</Button>
 						</div>
 					</section>
-				</div>
+				</section>
 			)}
 		</>
 	);

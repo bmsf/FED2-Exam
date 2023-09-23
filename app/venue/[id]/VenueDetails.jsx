@@ -11,7 +11,6 @@ const VenueDetails = async ({ venue }) => {
 
 	console.log(venue);
 
-	// <div className='text-[#9f9f9f]'></div>
 	return (
 		<div>
 			<AspectRatio ratio={16 / 9}>
