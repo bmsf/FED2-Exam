@@ -9,7 +9,7 @@ const NavigationLinks = ({ setIsOpen, session }) => {
 		{ title: 'Home', path: '/' },
 		{ title: 'Search', path: '/search' },
 		{ title: 'My Bookings', path: `/account/${jti}/my-bookings` },
-		{ title: 'Account', path: `account/${name}` },
+		{ title: 'Account', path: `account/profile` },
 	];
 
 	const adminLinks = [

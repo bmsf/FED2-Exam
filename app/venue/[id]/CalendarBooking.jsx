@@ -15,14 +15,14 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover';
 
-export function CalendarBooking({ venue }) {
+import createBooking from '@/app/api/createbooking';
+
+export function CalendarBooking({ venue, id }) {
 	const [signInDate, setsignInDate] = useState();
 	const [signOutDate, setSignOutDate] = useState();
 	const [guests, setGuests] = useState(1);
 
 	const { data: session } = useSession();
-
-	console.log(session);
 
 	const disabledDates = venue.bookings.map((booking) => {
 		const dateFrom = new Date(booking.dateFrom);
@@ -45,8 +45,17 @@ export function CalendarBooking({ venue }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('check in date', signInDate);
-		console.log('checkout in date', signOutDate);
+
+		const accessToken = session.accessToken;
+
+		const bookingData = {
+			dateFrom: signInDate.toISOString(),
+			dateTo: signOutDate.toISOString(),
+			guests: guests,
+			venueId: id, // Assuming the 'id' prop passed to CalendarBooking is the venueId you want.
+		};
+
+		createBooking(bookingData, accessToken);
 	};
 
 	return (

@@ -12,7 +12,6 @@ const Hero = () => {
 	const animationRef = useRef(null);
 
 	useEffect(() => {
-		// Animate the Lottie animation when the component mounts
 		animationRef.current.play();
 	}, []);
 

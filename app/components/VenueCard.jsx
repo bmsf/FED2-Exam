@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 function VenueCard({ venue }) {
@@ -5,13 +6,10 @@ function VenueCard({ venue }) {
 		<Link href={`/venue/${venue.id}`}>
 			<div className='bg-lightestPrimary rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300'>
 				<div className='relative aspect-video overflow-hidden rounded-t-md'>
-					<img
+					<Image
 						src={venue.media[0]}
-						style={{
-							width: '100%',
-							height: '100%',
-							objectFit: 'cover',
-						}}
+						width={800}
+						height={800}
 						alt={venue.name}
 						className='rounded-t-md'
 					/>

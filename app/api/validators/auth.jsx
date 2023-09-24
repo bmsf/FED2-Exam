@@ -73,3 +73,9 @@ export const createVenueSchema = z.object({
 		message: 'Description name must be at least 2 characters.',
 	}),
 });
+
+export const bookingSchema = z.object({
+	dateFrom: z.string().pipe(z.coerce.date()),
+	dateTo: z.string().pipe(z.coerce.date()),
+	guests: z.number().min(1, 'At least one guest is required'),
+});

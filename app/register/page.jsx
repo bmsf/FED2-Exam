@@ -1,9 +1,6 @@
-
-
 'use client';
 
 import { useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema } from '@/app/api/validators/auth'; // Import the appropriate schema
@@ -18,10 +15,8 @@ import {
 	FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import Link from 'next/link';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Textarea } from '@/components/ui/textarea';
-import { EyeIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 import registerAuth from '../api/auth/registerAuth';
 
