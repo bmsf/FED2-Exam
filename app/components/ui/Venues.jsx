@@ -5,7 +5,7 @@ const fetchVenues = async () => {
 	if (!response.ok) {
 		throw new Error('failed to fetch');
 	}
-	// await new Promise((resolve) => setTimeout(resolve, 2000));
+	await new Promise((resolve) => setTimeout(resolve, 2000));
 	const venues = await response.json();
 	return venues;
 };
@@ -16,7 +16,7 @@ export default async function Venues() {
 	return (
 		<div className='m-12 rounded-md grid grid-cols-4 gap-12'>
 			{venues.map((venue) => (
-				<div className='col-span-4 md:col-span-2 lg:col-span-1 bg-lightestPrimary rounded-md'>
+				<div className='col-span-4 md:col-span-2 lg:col-span-1 bg-transparent border rounded-md'>
 					<VenueCard key={venue.name} venue={venue} />
 				</div>
 			))}

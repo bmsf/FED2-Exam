@@ -2,7 +2,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import { AiOutlineUser, AiOutlineCamera } from 'react-icons/ai'; // Import icons
 import Link from 'next/link'; // Import Link from Next.js
-import AvatarEditor from '../AvatarEditor';
+import AvatarEditor from '../../components/AvatarEditor';
 
 const Profile = async () => {
 	const session = await getServerSession(authOptions);
@@ -32,7 +32,7 @@ const Profile = async () => {
 
 	return (
 		<div className='flex items-center mt-6'>
-			<div className='p-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
+			<div className='p-4 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto'>
 				<div className='text-center border-b border-text py-4 relative'>
 					<AvatarEditor
 						avatar={avatar}

@@ -42,7 +42,6 @@ const items = [
 export function ProfileForm() {
 	const { data: session } = useSession();
 
-	// 1. Define your form.
 	const form = useForm({
 		resolver: zodResolver(createVenueSchema),
 		defaultValues: {
@@ -58,7 +57,6 @@ export function ProfileForm() {
 		},
 	});
 
-	// 2. Define a submit handler.
 	async function onSubmit(values, e) {
 		e.preventDefault();
 		const { address, city, zip, country, name, description, items } = values;
@@ -87,6 +85,10 @@ export function ProfileForm() {
 		};
 
 		createVenue(formattedValues, session.accessToken);
+	}
+
+	if (!session.venueManager) {
+		return <p>You need to be a Venue Manager to show this page.</p>;
 	}
 
 	return (

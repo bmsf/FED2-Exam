@@ -20,13 +20,13 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
 			<body
-				className={`${openSans.className} flex flex-col min-h-screen bg-primary text-[#f5f5f5]`}
+				className={`${openSans.className} flex flex-col justify-between min-h-screen bg-primary text-[#f5f5f5]`}
 			>
+				{/* <ToastContainer /> */}
 				<Provider>
 					<Navbar />
 					{children}
-					{/* <Footer /> */}
-					<ToastContainer />
+					<Footer />
 				</Provider>
 			</body>
 		</html>

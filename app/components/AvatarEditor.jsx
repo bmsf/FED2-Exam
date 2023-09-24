@@ -11,11 +11,12 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
-
+import { getSession, useSession } from 'next-auth/react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 const AvatarEditor = ({ avatar, name, accessToken }) => {
 	const [error, setError] = useState(null);
@@ -38,6 +39,7 @@ const AvatarEditor = ({ avatar, name, accessToken }) => {
 			);
 
 			if (response.ok) {
+				const updatedSession = await getSession();
 				window.location.reload();
 			} else {
 				const errorData = await response.json();
@@ -53,7 +55,9 @@ const AvatarEditor = ({ avatar, name, accessToken }) => {
 			<DialogTrigger asChild>
 				<div className='relative inline-block'>
 					{avatar ? (
-						<img
+						<Image
+							height={300}
+							width={300}
 							src={avatar}
 							alt='User Profile'
 							className='w-20 h-20 mx-auto rounded-full'

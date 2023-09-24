@@ -144,6 +144,10 @@ const EditVenue = ({ params: { id } }) => {
 		updateVenue(id, session.accessToken, formattedValues);
 	}
 
+	if (!session.venueManager) {
+		return <p>You need to be a Venue Manager to show this page.</p>;
+	}
+
 	return (
 		<div className='flex flex-col justify-center  p-8 w-full md:w-2/4 py-10 mx-auto rounded-lg gap-5'>
 			<Link href={'/account'}>

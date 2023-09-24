@@ -14,6 +14,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from '@/components/ui/popover';
+import Link from 'next/link';
 
 import createBooking from '@/app/api/createbooking';
 
@@ -60,7 +61,10 @@ export function CalendarBooking({ venue, id }) {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit} className='flex flex-col gap-2 p-4'>
+			<form
+				onSubmit={handleSubmit}
+				className='flex flex-col gap-2 p-4 md:w-2/3 lg:w-1/3 mx-auto'
+			>
 				<div className='flex gap-2'>
 					<Button
 						variant={'outline'}
@@ -144,9 +148,9 @@ export function CalendarBooking({ venue, id }) {
 				) : (
 					<div className='text-error mt-4'>
 						Please{' '}
-						<a href='/login' className='underline'>
+						<Link href={'/api/auth/login'} className='underline'>
 							log in
-						</a>{' '}
+						</Link>{' '}
 						to book this place.
 					</div>
 				)}

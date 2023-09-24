@@ -13,9 +13,7 @@ const VenueDetails = async ({ venue }) => {
 
 	return (
 		<div>
-			
 			<div className='w-full md:w-2/3 mx-auto p-4 rounded-md my-3 flex flex-col gap-4'>
-				
 				<div className='border-b pb-5 border-[#9f9f9f]'>
 					<h2 className='text-md mb-2 text-white'>Amenities</h2>
 					<div className='mt-6'>
@@ -33,7 +31,7 @@ const VenueDetails = async ({ venue }) => {
 						</ul>
 					</div>
 				</div>
-				<div className='border-b pb-5 border-[#9f9f9f]'>
+				<div className='pb-5'>
 					<h2 className='text-md mb-2 text-white'>Location</h2>
 					<div className='mt-6'>
 						<div className='flex justify-between'>
