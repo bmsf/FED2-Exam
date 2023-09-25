@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/popover';
 import Link from 'next/link';
 
-import createBooking from '@/app/api/createbooking';
+import createBooking from '@/app/api/createBooking';
 
 export function CalendarBooking({ venue, id }) {
 	const [signInDate, setsignInDate] = useState();
