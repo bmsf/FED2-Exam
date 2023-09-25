@@ -18,7 +18,7 @@ import Link from 'next/link';
 
 import createBooking from '@/app/api/createBooking';
 
-export function CalendarBooking({ venue, id }) {
+const CalendarBooking = ({ venue, id }) => {
 	const [signInDate, setsignInDate] = useState();
 	const [signOutDate, setSignOutDate] = useState();
 	const [guests, setGuests] = useState(1);
@@ -157,4 +157,6 @@ export function CalendarBooking({ venue, id }) {
 			</form>
 		</>
 	);
-}
+};
+
+export default CalendarBooking;

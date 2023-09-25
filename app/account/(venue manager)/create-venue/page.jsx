@@ -39,8 +39,8 @@ const items = [
 	},
 ];
 
-export function ProfileForm() {
-	const { data: session } = useSession();
+const CreateVenue = () => {
+	const { data: session, loading } = useSession();
 
 	const form = useForm({
 		resolver: zodResolver(createVenueSchema),
@@ -86,6 +86,8 @@ export function ProfileForm() {
 
 		createVenue(formattedValues, session.accessToken);
 	}
+
+	if (loading) return <p>Loading...</p>;
 
 	if (!session.venueManager) {
 		return <p>You need to be a Venue Manager to show this page.</p>;
@@ -252,6 +254,6 @@ export function ProfileForm() {
 			</Form>
 		</div>
 	);
-}
+};
 
-export default ProfileForm;
+export default CreateVenue;
