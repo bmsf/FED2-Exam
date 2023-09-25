@@ -3,7 +3,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Image from 'next/image';
 import { FaUserGroup, FaStar } from 'react-icons/fa6';
 import VenueDetails from './VenueDetails';
-import { CalendarBooking } from './CalendarBooking';
+import CalendarBooking from './CalendarBooking';
 
 const Venue = async ({ params: { id } }) => {
 	const data = await fetch(
