@@ -36,7 +36,7 @@ const Hero = () => {
 					transition={{ duration: 0.5, delay: 1 }}
 				>
 					<h1 className='text-center text-3xl font-semibold whitespace-pre-line'>
-						Join Us in Exploring the{'\n'} World's Best Accommodations
+						Join Us in Exploring the&apos; World's Best Accommodations
 					</h1>
 				</motion.div>
 				<motion.div

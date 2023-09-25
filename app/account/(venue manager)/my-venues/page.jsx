@@ -7,7 +7,7 @@ import AvatarEditor from '@/app/components/AvatarEditor';
 import MyVenuesSection from '@/app/components/MyVenuesSection';
 import { Button } from '@/components/ui/button';
 
-const Account = async ({ params: { id } }) => {
+const MyVenues = async ({ params: { id } }) => {
 	const session = await getServerSession(authOptions);
 
 	const { accessToken } = session;
@@ -53,4 +53,4 @@ const Account = async ({ params: { id } }) => {
 	);
 };
 
-export default Account;
+export default MyVenues;

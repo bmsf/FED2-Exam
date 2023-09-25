@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
+import { Avatar } from '@/components/ui/avatar';
 
 const AvatarEditor = ({ avatar, name, accessToken }) => {
 	const [error, setError] = useState(null);
@@ -76,7 +77,9 @@ const AvatarEditor = ({ avatar, name, accessToken }) => {
 			</DialogTrigger>
 			<DialogContent className=' bg-lightestPrimary border-none'>
 				{avatar ? (
-					<img
+					<Image
+						height={60}
+						width={60}
 						src={avatar}
 						alt='User Profile'
 						className='w-20 h-20 mx-auto rounded-full'
@@ -105,9 +108,6 @@ const AvatarEditor = ({ avatar, name, accessToken }) => {
 				</div>
 
 				<DialogFooter>
-					{/* <Button type='submit' className='bg-primary'>
-						Cancel
-					</Button> */}
 					<Button type='button' className='bg-texas' onClick={handleOnSubmit}>
 						Save changes
 					</Button>

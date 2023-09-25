@@ -30,7 +30,10 @@ const MyVenuesSection = async ({ name, accessToken }) => {
 	return (
 		<section className='m-12 rounded-md grid grid-cols-4 gap-12'>
 			{venues.map((venue) => (
-				<div className='col-span-4 md:col-span-2 lg:col-span-1  rounded-md'>
+				<div
+					key={venue.name}
+					className='col-span-4 md:col-span-2 lg:col-span-1  rounded-md'
+				>
 					<Card className='bg-transparent'>
 						<CardHeader>
 							<CardTitle>{venue.name}</CardTitle>

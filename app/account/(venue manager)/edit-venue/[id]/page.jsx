@@ -93,7 +93,7 @@ const EditVenue = ({ params: { id } }) => {
 			// Call the async function
 			fetchData();
 		}
-	}, [session, id]);
+	}, [session, id, form]);
 
 	const items = [
 		{

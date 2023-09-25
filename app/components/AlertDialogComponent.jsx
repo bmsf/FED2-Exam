@@ -15,7 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import deleteVenue from '@/app/api/deleteVenue';
 
-const AlertDialogComponent = async ({ venue, accessToken }) => {
+const AlertDialogComponent = ({ venue, accessToken }) => {
 	const id = venue.id;
 	const onDelete = async () => {
 		deleteVenue(id, accessToken);
