@@ -108,10 +108,10 @@ const RegisterPage = () => {
 						)}
 					/>
 					<Button type='submit'>Next</Button>
-					<p className=''>
-						Already have an account?{' '}
-						<Link href={'/api/auth/login'} className='font-extrabold'>
-							<span>Login</span>
+					<p>
+						Already have an account?
+						<Link href={'/api/auth/login'} className='font-extrabold ml-1'>
+							Login
 						</Link>
 					</p>
 				</form>

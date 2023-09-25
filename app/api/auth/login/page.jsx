@@ -75,8 +75,8 @@ const LoginPage = () => {
 					/>
 					<Button type='submit'>Next</Button>
 					<p>
-						Don't have an account?&apos;
-						<Link href={'/register'} className='font-extrabold'>
+						Don&apos;t have an account?
+						<Link href={'/register'} className='font-extrabold ml-1'>
 							Sign Up
 						</Link>
 					</p>
