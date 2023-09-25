@@ -1,7 +1,6 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-
-import Image from 'next/image';
 import { FaUserGroup, FaStar } from 'react-icons/fa6';
+import Image from 'next/image';
 import VenueDetails from './VenueDetails';
 import CalendarBooking from './CalendarBooking';
 

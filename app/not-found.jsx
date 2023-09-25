@@ -6,7 +6,7 @@ export default function NotFound() {
 		<div className='text-xl gap-6 flex flex-col justify-center items-center min-h-screen mt-[-60px]'>
 			<h2>Not Found😢</h2>
 			<p>This page does not exist</p>
-			<Button asChil>
+			<Button>
 				<Link href={'/'}>Home</Link>
 			</Button>
 		</div>
