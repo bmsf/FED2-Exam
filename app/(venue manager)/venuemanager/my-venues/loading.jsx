@@ -5,7 +5,7 @@ const Loading = () => {
 		<div className='m-12 rounded-md grid grid-cols-4 gap-12'>
 			{Array.from({ length: 12 }, (_, i) => i + 1).map((venue) => (
 				<div
-					key={'Venue skeleton'}
+					key={venue}
 					className='col-span-4 md:col-span-2 lg:col-span-1 rounded-md'
 				>
 					<Skeleton className='aspect-video relative bg-lightestPrimary'></Skeleton>

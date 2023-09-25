@@ -14,13 +14,19 @@ function VenueCard({ venue }) {
 			<Card className='bg-transparent border-none rounded-md'>
 				<CardHeader>
 					<div className='relative aspect-video overflow-hidden rounded-t-md'>
-						<Image
-							src={venue.media[0]}
-							width={800}
-							height={800}
-							alt={venue.name}
-							className='rounded-t-md'
-						/>
+						{venue.media && venue.media[0] ? (
+							<Image
+								src={venue.media[0]}
+								width={800}
+								height={800}
+								alt={venue.name}
+								className='rounded-t-md'
+							/>
+						) : (
+							<div className='flex text-black items-center justify-center w-full h-full bg-gray-200'>
+								<span>No image</span>
+							</div>
+						)}
 					</div>
 					<CardTitle className='uppercase tracking-wide text-sm font-semibold text-white truncate'>
 						{venue.name}

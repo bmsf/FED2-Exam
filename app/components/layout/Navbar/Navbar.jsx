@@ -29,8 +29,6 @@ import Logo from '@/public/logo-no-background.png';
 export default function Navbar() {
 	const { data: session, status } = useSession();
 
-	console.log(session);
-
 	const SearchComponent = () => {
 		const [isInputVisible, setInputVisible] = useState(false);
 

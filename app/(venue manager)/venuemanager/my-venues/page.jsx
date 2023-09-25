@@ -7,7 +7,7 @@ import AvatarEditor from '@/app/components/AvatarEditor';
 import MyVenuesSection from '@/app/components/MyVenuesSection';
 import { Button } from '@/components/ui/button';
 
-const MyVenues = async ({ params: { id } }) => {
+const MyVenues = async () => {
 	const session = await getServerSession(authOptions);
 
 	const { accessToken } = session;
@@ -30,10 +30,6 @@ const MyVenues = async ({ params: { id } }) => {
 	const {
 		_count: { bookings, venues },
 	} = res;
-
-	if (!session.venueManager) {
-		return <p>You need to be a Venue Manager to show this page.</p>;
-	}
 
 	return (
 		<>
