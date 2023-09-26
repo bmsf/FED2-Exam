@@ -18,7 +18,7 @@ export default async function Venues() {
 			{venues.map((venue) => (
 				<div
 					key={venue.id}
-					className='col-span-4 md:col-span-2 lg:col-span-1 bg-transparent border rounded-md'
+					className='col-span-4 md:col-span-2 lg:col-span-1 bg-lightestPrimary rounded-md'
 				>
 					<VenueCard venue={venue} />
 				</div>
