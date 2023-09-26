@@ -88,7 +88,7 @@ const RegisterPage = () => {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder='Avatar' {...field} />
+									<Input placeholder='Avatar(optional)' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

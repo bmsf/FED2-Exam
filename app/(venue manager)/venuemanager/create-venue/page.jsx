@@ -88,7 +88,7 @@ const CreateVenue = () => {
 		};
 
 		createVenue(formattedValues, session.accessToken);
-		setIsSubmitting(false);
+		setIsSubmitting(true);
 	}
 
 	return (

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/ui/button';
+import { SpinnerButton } from '@/app/components/SpinnerButton';
 import {
 	Form,
 	FormControl,
@@ -23,6 +23,7 @@ import updateVenue from '@/app/api/updateVenue';
 import Link from 'next/link';
 
 const EditVenue = ({ params: { id } }) => {
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { data: session } = useSession();
 	const [initialData, setInitialData] = useState(null);
 
@@ -116,6 +117,7 @@ const EditVenue = ({ params: { id } }) => {
 
 	async function onSubmit(values, e) {
 		e.preventDefault();
+		setIsSubmitting(true);
 		const { address, city, zip, country, name, description, items } = values;
 
 		const price = Number(values.price);
@@ -142,6 +144,7 @@ const EditVenue = ({ params: { id } }) => {
 		};
 
 		updateVenue(id, session.accessToken, formattedValues);
+		setIsSubmitting(true);
 	}
 
 	return (
@@ -300,7 +303,11 @@ const EditVenue = ({ params: { id } }) => {
 						)}
 					/>
 
-					<Button type='submit'>Save</Button>
+					<SpinnerButton
+						type='submit'
+						name='Update venue'
+						state={isSubmitting}
+					/>
 				</form>
 			</Form>
 		</div>

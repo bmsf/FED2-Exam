@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
 
 const updateVenue = async (id, accessToken, formattedValues) => {
@@ -18,7 +19,7 @@ const updateVenue = async (id, accessToken, formattedValues) => {
 		if (response.ok) {
 			console.log(id);
 			toast.success('Venue updated!', {
-				onClose: () => window.location.replace('/account'),
+				onClose: () => redirect('/venuemanager/my-venues'),
 			});
 		} else {
 			const errorResponse = await response.json();

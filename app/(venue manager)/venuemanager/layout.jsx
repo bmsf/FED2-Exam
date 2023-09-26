@@ -19,7 +19,7 @@ const ProfileLayout = async ({ children }) => {
 	}
 
 	return (
-		<div className='min-h-screen p-6 mx-auto w-full lg:w-3/4'>
+		<div className='min-h-screen p-6 mx-auto w-full'>
 			<div className='mb-6'>
 				<h1 className='text-3xl'>Account</h1>
 			</div>

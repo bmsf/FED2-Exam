@@ -32,7 +32,7 @@ const MyVenuesSection = async ({ name, accessToken }) => {
 			{venues.map((venue) => (
 				<div
 					key={venue.name}
-					className='col-span-4 md:col-span-2 lg:col-span-1  rounded-md'
+					className='col-span-4 md:col-span-2 lg:col-span-1 rounded-md'
 				>
 					<Card className='bg-transparent'>
 						<CardHeader>
