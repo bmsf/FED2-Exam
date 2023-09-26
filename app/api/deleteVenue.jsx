@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
 
 const deleteVenue = async (id, accessToken) => {
@@ -15,7 +16,7 @@ const deleteVenue = async (id, accessToken) => {
 		if (response.ok) {
 			console.log(id);
 			toast.success('Venue deleted!', {
-				onClose: () => window.location.replace('/account'),
+				onClose: () => redirect('/venuemanager/my-venues'),
 			});
 		} else {
 			const errorResponse = await response.json();

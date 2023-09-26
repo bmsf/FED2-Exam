@@ -11,6 +11,7 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { HiX } from 'react-icons/hi';
 
 import { Button } from '@/components/ui/button';
 import { SpinnerButton } from './SpinnerButton';
@@ -25,7 +26,7 @@ const AlertDialogComponent = ({ venue, accessToken }) => {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<Button variant='destructive'>Delete</Button>
+				<HiX className='m-4 cursor-pointer' />
 			</AlertDialogTrigger>
 			<AlertDialogContent className='bg-black border-none'>
 				<AlertDialogHeader>

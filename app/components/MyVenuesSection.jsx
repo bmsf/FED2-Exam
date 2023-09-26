@@ -6,7 +6,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-
 import { Button } from '@/components/ui/button';
 
 import AlertDialogComponent from './AlertDialogComponent';
@@ -35,15 +34,22 @@ const MyVenuesSection = async ({ name, accessToken }) => {
 					className='col-span-4 md:col-span-2 lg:col-span-1 rounded-md'
 				>
 					<Card className='bg-transparent'>
-						<CardHeader>
-							<CardTitle>{venue.name}</CardTitle>
-							<CardDescription>{venue.description}</CardDescription>
-						</CardHeader>
-						<CardContent></CardContent>
-						<CardFooter className='flex justify-between'>
+						<div className='flex justify-between'>
+							<CardHeader>
+								<CardTitle>{venue.name}</CardTitle>
+								{/* <CardDescription>{venue.description}</CardDescription> */}
+							</CardHeader>
 							<AlertDialogComponent venue={venue} accessToken={accessToken} />
+						</div>
+						<CardContent>{venue.description}</CardContent>
+						<CardFooter className='flex justify-between'>
 							<Button variant='outline' asChild>
 								<Link href={`/venuemanager/edit-venue/${venue.id}`}>Edit</Link>
+							</Button>
+							<Button asChild>
+								<Link href={`/venuemanager/view-bookings/${venue.id}`}>
+									View Bookings
+								</Link>
 							</Button>
 						</CardFooter>
 					</Card>
