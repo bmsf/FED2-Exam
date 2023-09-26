@@ -144,15 +144,8 @@ const EditVenue = ({ params: { id } }) => {
 		updateVenue(id, session.accessToken, formattedValues);
 	}
 
-	if (!session.venueManager) {
-		return <p>You need to be a Venue Manager to show this page.</p>;
-	}
-
 	return (
 		<div className='flex flex-col justify-center  p-8 w-full md:w-2/4 py-10 mx-auto rounded-lg gap-5'>
-			<Link href={'/account'}>
-				<FaAngleLeft className='h-6 w-6 mb-8' />
-			</Link>
 			<h1 className='text-4xl mb-8'>Edit venue</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>

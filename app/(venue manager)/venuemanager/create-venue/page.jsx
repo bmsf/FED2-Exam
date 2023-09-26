@@ -1,8 +1,7 @@
 'use client';
 
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import { Button } from '@/components/ui/button';
 import {
 	Form,
 	FormControl,
@@ -17,8 +16,10 @@ import { Textarea } from '@/components/ui/textarea';
 
 import { useForm } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
-import createVenue from '@/app/api/createVenue';
 import { createVenueSchema } from '@/app/api/validators/auth';
+import createVenue from '@/app/api/createVenue';
+
+import { SpinnerButton } from '@/app/components/SpinnerButton';
 
 const items = [
 	{
@@ -40,7 +41,8 @@ const items = [
 ];
 
 const CreateVenue = () => {
-	const { data: session, loading } = useSession();
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const { data: session } = useSession();
 
 	const form = useForm({
 		resolver: zodResolver(createVenueSchema),
@@ -59,6 +61,7 @@ const CreateVenue = () => {
 
 	async function onSubmit(values, e) {
 		e.preventDefault();
+		setIsSubmitting(true);
 		const { address, city, zip, country, name, description, items } = values;
 
 		const price = Number(values.price);
@@ -85,13 +88,8 @@ const CreateVenue = () => {
 		};
 
 		createVenue(formattedValues, session.accessToken);
+		setIsSubmitting(false);
 	}
-
-	if (loading) return <p>Loading...</p>;
-
-	// if (!session.venueManager) {
-	// 	return <p>You need to be a Venue Manager to show this page.</p>;
-	// }
 
 	return (
 		<div className='flex flex-col justify-center mt-12 p-8 w-full md:w-2/4 py-10 mx-auto rounded-lg gap-5'>
@@ -249,7 +247,11 @@ const CreateVenue = () => {
 						)}
 					/>
 
-					<Button type='submit'>Submit</Button>
+					<SpinnerButton
+						type='submit'
+						name='Create venue'
+						state={isSubmitting}
+					/>
 				</form>
 			</Form>
 		</div>

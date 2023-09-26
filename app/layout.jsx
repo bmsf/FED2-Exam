@@ -1,5 +1,5 @@
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Navbar from './components/layout/Navbar/Navbar';
 import Footer from './components/layout/Footer';
@@ -8,7 +8,7 @@ import Provider from './components/Provider';
 
 import { Rubik } from 'next/font/google';
 
-const openSans = Rubik({ subsets: ['latin'] });
+const rubik = Rubik({ subsets: ['latin'] });
 
 export const metadata = {
 	title: 'Holidaze - Premier Accommodations & Vacation Rentals',
@@ -20,12 +20,23 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
 			<body
-				className={`${openSans.className} flex flex-col justify-between min-h-screen bg-primary text-[#f5f5f5]`}
+				className={`${rubik.className} flex flex-col justify-between min-h-screen bg-primary text-[#f5f5f5]`}
 			>
-				{/* <ToastContainer /> */}
 				<Provider>
 					<Navbar />
 					{children}
+					<ToastContainer
+						position='top-center'
+						autoClose={5000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
+						theme='dark'
+					/>
 					<Footer />
 				</Provider>
 			</body>

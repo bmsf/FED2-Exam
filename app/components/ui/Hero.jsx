@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Lottie from 'lottie-react';
@@ -9,12 +9,6 @@ import { Button } from '@/components/ui/button';
 import { signIn } from 'next-auth/react';
 
 const Hero = () => {
-	const animationRef = useRef(null);
-
-	useEffect(() => {
-		animationRef.current.play();
-	}, []);
-
 	return (
 		<div className='flex flex-col lg:flex-row items-center justify-center min-h-screen w-full p-4 lg:p-0 lg:gap-10'>
 			<motion.div
@@ -23,11 +17,7 @@ const Hero = () => {
 				transition={{ duration: 1 }}
 				className='w-3/4 md:w-2/4 lg:w-1/4'
 			>
-				<Lottie
-					lottieRef={animationRef}
-					animationData={animationData}
-					loop={true}
-				/>
+				<Lottie animationData={animationData} loop={true} />
 			</motion.div>
 			<div className='flex flex-col items-center gap-10 px-3'>
 				<motion.div

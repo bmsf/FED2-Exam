@@ -1,12 +1,12 @@
 'use client';
-
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '@/app/api/validators/auth'; // Import the appropriate schema
 
-import { Button } from '@/components/ui/button';
+import { SpinnerButton } from '@/app/components/SpinnerButton';
 import {
 	Form,
 	FormControl,
@@ -19,7 +19,7 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 
 const LoginPage = () => {
-	// const router = useRouter();
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const form = useForm({
 		resolver: zodResolver(loginSchema),
@@ -31,6 +31,7 @@ const LoginPage = () => {
 
 	const onSubmit = async (values, e) => {
 		e.preventDefault();
+		setIsSubmitting(true);
 		const result = await signIn('credentials', {
 			...values,
 			redirect: false,
@@ -42,6 +43,7 @@ const LoginPage = () => {
 		} else {
 			toast.error('Wrong credentials. Please try again');
 		}
+		setIsSubmitting(true);
 	};
 
 	return (
@@ -73,7 +75,7 @@ const LoginPage = () => {
 							</FormItem>
 						)}
 					/>
-					<Button type='submit'>Next</Button>
+					<SpinnerButton type='submit' name='Next' state={isSubmitting} />
 					<p>
 						Don&apos;t have an account?
 						<Link href={'/register'} className='font-extrabold ml-1'>

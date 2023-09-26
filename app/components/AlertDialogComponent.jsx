@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 
 import { Button } from '@/components/ui/button';
+import { SpinnerButton } from './SpinnerButton';
 import deleteVenue from '@/app/api/deleteVenue';
 
 const AlertDialogComponent = ({ venue, accessToken }) => {

@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema } from '@/app/api/validators/auth'; // Import the appropriate schema
 
@@ -19,8 +20,10 @@ import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
 
 import registerAuth from '../api/auth/registerAuth';
+import { SpinnerButton } from '@/app/components/SpinnerButton';
 
 const RegisterPage = () => {
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const form = useForm({
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
@@ -33,7 +36,9 @@ const RegisterPage = () => {
 	});
 
 	const onSubmit = async (values) => {
+		setIsSubmitting(true);
 		registerAuth(values);
+		setIsSubmitting(false);
 	};
 
 	return (
@@ -107,7 +112,7 @@ const RegisterPage = () => {
 							</FormItem>
 						)}
 					/>
-					<Button type='submit'>Next</Button>
+					<SpinnerButton type='submit' name='Next' state={isSubmitting} />
 					<p>
 						Already have an account?
 						<Link href={'/api/auth/login'} className='font-extrabold ml-1'>

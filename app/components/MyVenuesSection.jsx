@@ -43,7 +43,7 @@ const MyVenuesSection = async ({ name, accessToken }) => {
 						<CardFooter className='flex justify-between'>
 							<AlertDialogComponent venue={venue} accessToken={accessToken} />
 							<Button variant='outline' asChild>
-								<Link href={`/account/edit-venue/${venue.id}`}>Edit</Link>
+								<Link href={`/venuemanager/edit-venue/${venue.id}`}>Edit</Link>
 							</Button>
 						</CardFooter>
 					</Card>

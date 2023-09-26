@@ -7,6 +7,7 @@ import {
 	HiOutlineUser,
 	HiOutlineCalendar,
 	HiUser,
+	HiOutlinePlus,
 } from 'react-icons/hi';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -82,7 +83,9 @@ export default function Navbar() {
 						) : session && session.avatar ? (
 							<Avatar className='h-8 w-8 cursor-pointer'>
 								<AvatarImage src={session.avatar} />
-								<AvatarFallback>CN</AvatarFallback>
+								<div className='flex items-center justify-center w-8 h-8 bg-white rounded-full border border-gray-300'>
+									<HiUser className='text-lightPrimary cursor-pointer w-5 h-5' />
+								</div>
 							</Avatar>
 						) : (
 							<div className='flex items-center justify-center w-8 h-8 bg-white rounded-full border border-gray-300'>
@@ -91,26 +94,57 @@ export default function Navbar() {
 						)}
 					</DropdownMenuTrigger>
 					{session ? (
-						<DropdownMenuContent className='mr-4'>
-							<DropdownMenuItem asChild>
-								<Link href={'/account/profile'}>
-									<HiOutlineUser className='mr-2 h-4 w-4' />
-									<span>Account</span>
-								</Link>
-							</DropdownMenuItem>
-							<DropdownMenuItem className='border-b' asChild>
-								<Link href={'/account/my-bookings'}>
-									<HiOutlineCalendar className='mr-2 h-4 w-4' />
-									<span>My bookings</span>
-								</Link>
-							</DropdownMenuItem>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem onClick={handleLogout}>
-								<HiLogout className='mr-2 h-4 w-4' />
-								<span>Log out</span>
-							</DropdownMenuItem>
-						</DropdownMenuContent>
+						session.venueManager ? (
+							// Logged in as venue manager
+							<DropdownMenuContent className='mr-4 '>
+								<DropdownMenuItem asChild className='border-b'>
+									<Link href={'/venuemanager'}>
+										<HiOutlineUser className='mr-2 h-4 w-4' />
+										<span>Account</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem className='' asChild>
+									<Link href={'/venuemanager/my-venues'}>
+										<HiOutlineCalendar className='mr-2 h-4 w-4' />
+										<span>My venues</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem className='border-b' asChild>
+									<Link href={'/venuemanager/create-venue'}>
+										<HiOutlinePlus className='mr-2 h-4 w-4' />
+										<span>Create venue</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem onClick={handleLogout}>
+									<HiLogout className='mr-2 h-4 w-4' />
+									<span>Log out</span>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						) : (
+							// Logged in but not as a venue manager
+							<DropdownMenuContent className='mr-4'>
+								<DropdownMenuItem asChild>
+									<Link href={'/account'}>
+										<HiOutlineUser className='mr-2 h-4 w-4' />
+										<span>Account</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem className='border-b' asChild>
+									<Link href={'/account/my-bookings'}>
+										<HiOutlineCalendar className='mr-2 h-4 w-4' />
+										<span>My bookings</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem onClick={handleLogout}>
+									<HiLogout className='mr-2 h-4 w-4' />
+									<span>Log out</span>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						)
 					) : (
+						// Not logged in
 						<DropdownMenuContent className='mr-4'>
 							<DropdownMenuItem asChild>
 								<Link href={'/api/auth/login'}>

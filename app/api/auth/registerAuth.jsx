@@ -1,27 +1,17 @@
 import { toast } from 'react-toastify';
 import { API_HOLIDAZE_URL } from '../constants';
+
 const action = '/auth/register';
 const method = 'post';
 
-/**
- * Registers a new user by sending a POST request with the registration form data to the API.
- * @async
- * @function
- * @param {Object} formData - An object containing the registration form data.
- * @throws {Error} If there was an error with the API call.
- * @returns {Promise<void>} A promise that resolves with no value.
- * @example
- * registerAuth(formData);
- */
-
 const registerAuth = async (formData) => {
 	const registerURL = API_HOLIDAZE_URL + action;
-
 	const body = JSON.stringify(formData);
 
-	console.log(body);
-
 	try {
+		// Display a toast message indicating that the account is being created
+		const toastId = toast('Creating account...', { autoClose: false });
+
 		const response = await fetch(registerURL, {
 			headers: {
 				'Content-Type': 'application/json',
@@ -29,7 +19,12 @@ const registerAuth = async (formData) => {
 			method,
 			body,
 		});
+
+		// Close the initial toast regardless of whether the fetch was successful
+		toast.dismiss(toastId);
+
 		if (response.ok) {
+			// Display a success toast and redirect to the login page when the toast closes
 			toast.success('Account created successfully!🔥', {
 				onClose: () => window.location.replace('/api/auth/login'),
 			});
@@ -37,12 +32,13 @@ const registerAuth = async (formData) => {
 			const errorResponse = await response.json();
 			const errorMessage =
 				errorResponse.errors[0]?.message || 'An unknown error occurred';
+			// Display an error toast
 			toast.error(errorMessage);
-			console.log(errorResponse);
 		}
 	} catch (error) {
+		// If an exception was caught, dismiss the initial toast and display an error toast
+		toast.dismiss(toastId);
 		toast.error('Something went wrong, try again');
-		console.log(error);
 	}
 };
 
