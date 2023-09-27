@@ -9,7 +9,9 @@ import {
 	HiUser,
 	HiOutlinePlus,
 } from 'react-icons/hi';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -26,44 +28,25 @@ import Image from 'next/image';
 import { signOut, useSession } from 'next-auth/react';
 
 import Logo from '@/public/logo-no-background.png';
+import { redirect } from 'next/navigation';
 
 export default function Navbar() {
 	const { data: session, status } = useSession();
 
-	const SearchComponent = () => {
-		const [isInputVisible, setInputVisible] = useState(false);
-
-		const inputVariants = {
-			hidden: { width: 0, opacity: 0 },
-			visible: { width: '200px', opacity: 1 },
-		};
-
-		return (
-			<div className='relative flex items-center'>
-				<AnimatePresence>
-					{isInputVisible && (
-						<motion.input
-							className='border rounded-md p-1'
-							type='text'
-							initial='hidden'
-							animate='visible'
-							exit='hidden'
-							variants={inputVariants}
-							transition={{ duration: 0.5 }}
-						/>
-					)}
-				</AnimatePresence>
-				<HiOutlineSearch
-					className='h-6 w-6 cursor-pointer active:scale-95 transform transition'
-					onClick={() => setInputVisible(!isInputVisible)}
-				/>
-			</div>
-		);
-	};
-
 	const handleLogout = async () => {
 		await signOut();
 	};
+
+	function SearchBar() {
+		return (
+			<div className='flex items-center space-x-2'>
+				<Input type='text' className='px-3 py-2 w-80' placeholder='Search...' />
+				<Button className='px-3 py-2'>
+					<Link href={'/search?'}>Search</Link>
+				</Button>
+			</div>
+		);
+	}
 
 	return (
 		<nav className='flex justify-between items-center px-3 lg:px-12 py-6 bg-lightPrimary'>
@@ -74,8 +57,8 @@ export default function Navbar() {
 					alt='Holidaze Logo'
 				/>
 			</Link>
+			{/* <SearchBar /> */}
 			<div className='flex gap-6'>
-				<SearchComponent />
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						{status === 'loading' ? (

@@ -13,7 +13,7 @@ const ProfileLayout = async ({ children }) => {
 			<div className='flex flex-col items-center justify-center'>
 				<p className='mb-4'>This page is only for logged in users</p>
 				<Button asChild>
-					<Link href={'/'}>Go to Homepage</Link>
+					<Link href={'/api/auth/login'}>Go to the login page</Link>
 				</Button>
 			</div>
 		);
