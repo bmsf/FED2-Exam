@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 const ProfileLayout = async ({ children }) => {
 	const session = await getServerSession(authOptions);
 
-	if (!session.venueManager) {
+	if (!session || !session.venueManager) {
 		return (
 			<div className='flex flex-col items-center justify-center'>
 				<p className='mb-4'>This page is only for venue managers</p>

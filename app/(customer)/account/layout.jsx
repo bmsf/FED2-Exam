@@ -8,10 +8,10 @@ import ProfileMenu from '@/app/components/ProfileMenu';
 const ProfileLayout = async ({ children }) => {
 	const session = await getServerSession(authOptions);
 
-	if (session.venueManager) {
+	if (!session || session.venueManager) {
 		return (
 			<div className='flex flex-col items-center justify-center'>
-				<p className='mb-4'>This page is only for users</p>
+				<p className='mb-4'>This page is only for logged in users</p>
 				<Button asChild>
 					<Link href={'/'}>Go to Homepage</Link>
 				</Button>
