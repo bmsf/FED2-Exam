@@ -57,6 +57,7 @@ export const authOptions = {
 
 	pages: {
 		signIn: '/api/auth/login',
+		
 	},
 };
 
