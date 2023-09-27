@@ -8,16 +8,16 @@ import ProfileMenu from '@/app/components/ProfileMenu';
 const ProfileLayout = async ({ children }) => {
 	const session = await getServerSession(authOptions);
 
-	// if (!session || session.venueManager) {
-	// 	return (
-	// 		<div className='flex flex-col items-center justify-center'>
-	// 			<p className='mb-4'>This page is only for logged in users</p>
-	// 			<Button asChild>
-	// 				<Link href={'/'}>Go to Homepage</Link>
-	// 			</Button>
-	// 		</div>
-	// 	);
-	// }
+	if (!session || session.venueManager) {
+		return (
+			<div className='flex flex-col items-center justify-center'>
+				<p className='mb-4'>This page is only for logged in users</p>
+				<Button asChild>
+					<Link href={'/'}>Go to Homepage</Link>
+				</Button>
+			</div>
+		);
+	}
 
 	return (
 		<div className='min-h-screen p-6 mx-auto w-full lg:w-3/4'>
