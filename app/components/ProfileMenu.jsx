@@ -35,7 +35,7 @@ const ProfileMenu = () => {
 							}`}
 						>
 							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								<HiOutlineUser className='mr-2' />
+								<HiOutlineUser className='mr-2 h-7 w-7' />
 								<span>Profile</span>
 							</NavigationMenuLink>
 						</Link>
@@ -48,7 +48,7 @@ const ProfileMenu = () => {
 							}`}
 						>
 							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								<FaHouse className='mr-2' />
+								<FaHouse className='mr-2 h-7 w-7' />
 								<span>My venues</span>
 							</NavigationMenuLink>
 						</Link>
@@ -61,7 +61,7 @@ const ProfileMenu = () => {
 							}`}
 						>
 							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								<HiOutlinePlus className='mr-2' />
+								<HiOutlinePlus className='mr-2 h-7 w-7' />
 								<span>Create a new venue</span>
 							</NavigationMenuLink>
 						</Link>

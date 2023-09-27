@@ -48,7 +48,7 @@ const LoginPage = () => {
 
 	return (
 		<div className='flex flex-col justify-center mt-12 p-8 w-full md:w-2/4 lg:w-2/5 py-10 mx-auto rounded-lg gap-5'>
-			<h1 className='text-4xl mb-8'>Login</h1>
+			<h1 className='text-4xl mb-8 font-semibold'>Sign in</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 					<FormField

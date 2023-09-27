@@ -38,12 +38,12 @@ const RegisterPage = () => {
 	const onSubmit = async (values) => {
 		setIsSubmitting(true);
 		registerAuth(values);
-		setIsSubmitting(true);
+		setIsSubmitting(false);
 	};
 
 	return (
 		<div className='flex flex-col justify-center mt-12 p-8 w-full md:w-2/4 lg:w-2/5 py-10 mx-auto rounded-lg gap-5'>
-			<h1 className='text-4xl mb-8'>Sign Up</h1>
+			<h1 className='text-4xl mb-8 font-semibold'>Create account</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 					<FormField
@@ -52,7 +52,7 @@ const RegisterPage = () => {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder='Name' {...field} />
+									<Input placeholder='Username' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -100,20 +100,39 @@ const RegisterPage = () => {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Checkbox
-										checked={field.value}
-										onCheckedChange={(checked) => field.onChange(checked)}
-									/>
+									<div className='items-top flex space-x-2'>
+										<Checkbox
+											id='venuemanager'
+											checked={field.value}
+											onCheckedChange={(checked) => field.onChange(checked)}
+										/>
+										<div className='grid gap-1.5 leading-none'>
+											<label
+												htmlFor='venuemanager'
+												className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+											>
+												Register as Venue Manager
+											</label>
+											<p className='text-sm text-muted-foreground'>
+												Entails managing venue details, events, and bookings.
+											</p>
+										</div>
+									</div>
 								</FormControl>
-								<FormLabel className='font-normal ml-2'>
-									Venue manager
-								</FormLabel>
+
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
-					<SpinnerButton type='submit' name='Next' state={isSubmitting} />
-					<p>
+					<div>
+						<SpinnerButton
+							type='submit'
+							name='Next'
+							state={isSubmitting}
+							className='w-full rounded-full h-12'
+						/>
+					</div>
+					<p className='mb-44'>
 						Already have an account?
 						<Link href={'/api/auth/login'} className='font-extrabold ml-1'>
 							Login

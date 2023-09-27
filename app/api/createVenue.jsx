@@ -26,7 +26,8 @@ const createVenue = async (formattedValues, accessToken) => {
 		if (response.ok) {
 			// Display a success toast and redirect to the account page when the toast closes
 			toast.success('New venue created🔥', {
-				onClose: () => redirect('/venuemanager/my-venues'),
+				onClose: () =>
+					redirect('/venuemanager/my-venues') && window.location.reload(true),
 			});
 		} else {
 			const errorResponse = await response.json();

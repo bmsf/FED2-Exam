@@ -7,6 +7,7 @@ export const authOptions = {
 	},
 	providers: [
 		CredentialsProvider({
+			secret: process.env.NEXTAUTH_SECRET,
 			type: 'credentials',
 			credentials: {},
 			async authorize(credentials, req) {
@@ -57,7 +58,6 @@ export const authOptions = {
 
 	pages: {
 		signIn: '/api/auth/login',
-		
 	},
 };
 
