@@ -7,7 +7,6 @@ export const authOptions = {
 	},
 	providers: [
 		CredentialsProvider({
-			secret: process.env.NEXTAUTH_SECRET,
 			type: 'credentials',
 			credentials: {},
 			async authorize(credentials, req) {
@@ -44,6 +43,7 @@ export const authOptions = {
 			},
 		}),
 	],
+	secret: process.env.NEXTAUTH_SECRET,
 	callbacks: {
 		async jwt({ token, user }) {
 			if (user) return { ...token, ...user };

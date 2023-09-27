@@ -24,7 +24,7 @@ const ProfileLayout = async ({ children }) => {
 			<div className='mb-6'>
 				<h1 className='text-3xl'>Account</h1>
 			</div>
-			<ProfileMenu />
+			{/* <ProfileMenu /> */}
 			{children}
 		</div>
 	);
