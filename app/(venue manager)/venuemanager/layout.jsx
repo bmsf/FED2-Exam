@@ -7,6 +7,10 @@ import { Button } from '@/components/ui/button';
 const ProfileLayout = async ({ children }) => {
 	const session = await getServerSession(authOptions);
 
+	if (session === null) {
+		return <p>Loading...</p>;
+	}
+
 	if (!session || !session.venueManager) {
 		return (
 			<div className='flex flex-col items-center justify-center'>

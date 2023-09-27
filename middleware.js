@@ -1,7 +1,7 @@
 export { default } from 'next-auth/middleware';
 
 // export const config = { matcher: ['/account/:path*'] };
-export const config = { matcher: ['/venuemanager/:path*'] };
+export const config = { matcher: ['/iamnew/:path*'] };
 
 // import { withAuth } from 'next-auth/middleware';
 
