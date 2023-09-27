@@ -9,18 +9,10 @@ import { withAuth } from 'next-auth/middleware';
 export default withAuth(function middleware(req) {}, {
 	callbacks: {
 		authorized: ({ req, token }) => {
-			const pathname = req.nextUrl.pathname;
-
-			// Check if the pathname starts with /venuemanager or /account
-			if (
-				(pathname.startsWith('/venuemanager') ||
-					pathname.startsWith('/account')) &&
-				token === null
-			) {
-				return false; // User is not authorized
+			if (req.nextUrl.pathname.startsWith('/account') && token === null) {
+				return false;
 			}
-
-			return true; // User is authorized
+			return true;
 		},
 	},
 });
