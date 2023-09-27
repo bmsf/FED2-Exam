@@ -55,7 +55,9 @@ const Hero = () => {
 								Welcome back, {session.user.name}!
 							</h1>
 							<p>Discover new experiences and manage your bookings.</p>
-							<Link href='/account'>Go to Dashboard</Link>
+							<Button>
+								<Link href='/account'>View my bookings</Link>
+							</Button>
 						</>
 					)
 				) : (

@@ -38,7 +38,7 @@ const RegisterPage = () => {
 	const onSubmit = async (values) => {
 		setIsSubmitting(true);
 		registerAuth(values);
-		setIsSubmitting(false);
+		setIsSubmitting(true);
 	};
 
 	return (
