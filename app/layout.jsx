@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 			<body
 				className={`${rubik.className} flex flex-col justify-between min-h-screen bg-primary text-[#f5f5f5]`}
 			>
-				<Provider>
+				<Provider basePath='/'>
 					<Navbar />
 					{children}
 					<ToastContainer
