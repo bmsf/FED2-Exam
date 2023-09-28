@@ -50,10 +50,14 @@ const CalendarBooking = ({ venue, id }) => {
 		const accessToken = session.accessToken;
 
 		const bookingData = {
-			dateFrom: signInDate.toISOString(),
-			dateTo: signOutDate.toISOString(),
+			dateFrom: signInDate?.toISOString(),
+			dateTo: signOutDate?.toISOString(),
 			guests: guests,
 			venueId: id, // Assuming the 'id' prop passed to CalendarBooking is the venueId you want.
+			name: venue.name,
+			description: venue.description,
+			price: venue.price,
+			maxGuests: venue.maxGuests,
 		};
 
 		createBooking(bookingData, accessToken);
