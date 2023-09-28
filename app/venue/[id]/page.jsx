@@ -11,10 +11,10 @@ const Venue = async ({ params: { id } }) => {
 	const venue = await data.json();
 
 	return (
-		<div className='w-full lg:w-2/3 mx-auto'>
+		<section className='w-full lg:w-2/3 mx-auto'>
 			<div className='p-5'>
 				<div className='flex justify-between'>
-					<h1 className='text-2xl  text-white font-light'>{venue.name}</h1>
+					<h1 className='text-2xl text-white font-light'>{venue.name}</h1>
 					<span className=''>${venue.price}</span>
 				</div>
 				<div className='flex mt-2 gap-2 items-center text-[#9f9f9f] text-sm'>
@@ -24,24 +24,31 @@ const Venue = async ({ params: { id } }) => {
 					<span>Rating: {venue.rating}</span>
 				</div>
 			</div>
-			<div className='md:w-2/3 lg:w-2/4 mx-auto'>
-				<AspectRatio ratio={16 / 9}>
-					<Image
-						height={1000}
-						width={1000}
-						className='object-cover h-full w-full'
-						src={
-							venue.media.length > 0
-								? venue.media[0]
-								: 'path_to_default_image.jpg'
-						}
-						alt={venue.name}
-					/>
-				</AspectRatio>
+			<div className='flex flex-col w-full mx-auto'>
+				<div className='md:w-2/3 mx-auto'>
+					<AspectRatio ratio={16 / 9}>
+						<Image
+							height={1000}
+							width={1000}
+							className='object-cover rounded-md h-full w-full'
+							src={
+								venue.media.length > 0
+									? venue.media[0]
+									: 'path_to_default_image.jpg'
+							}
+							alt={venue.name}
+						/>
+					</AspectRatio>
+				</div>
+				<div className='w-full'>
+					<CalendarBooking venue={venue} id={id} />
+				</div>
 			</div>
-			<CalendarBooking venue={venue} id={id} />
-			<VenueDetails venue={venue} />
-		</div>
+
+			<div className='w-full'>
+				<VenueDetails venue={venue} />
+			</div>
+		</section>
 	);
 };
 

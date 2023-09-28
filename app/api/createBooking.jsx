@@ -1,14 +1,15 @@
+import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-const createVenue = async (formattedValues, accessToken) => {
-	const body = JSON.stringify(formattedValues);
+const createVenue = async (bookingData, accessToken, id) => {
+	const body = JSON.stringify(bookingData);
 
 	try {
 		// Display a toast message indicating that the venue is being created
 		const toastId = toast('Creating venue...', { autoClose: false });
 
 		const response = await fetch(
-			`https://api.noroff.dev/api/v1/holidaze/venues`,
+			`https://api.noroff.dev/api/v1/holidaze/bookings`,
 			{
 				method: 'POST',
 				headers: {
@@ -24,8 +25,8 @@ const createVenue = async (formattedValues, accessToken) => {
 
 		if (response.ok) {
 			// Display a success toast and redirect to the account page when the toast closes
-			toast.success('New venue created🔥', {
-				onClose: () => window.location.replace('/account'),
+			toast.success('New reservation made🔥', {
+				onClose: () => redirect(`/venue/${id}/booking-confirmation`),
 			});
 		} else {
 			const errorResponse = await response.json();

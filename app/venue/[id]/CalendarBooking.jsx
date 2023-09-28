@@ -50,11 +50,13 @@ const CalendarBooking = ({ venue, id }) => {
 		const accessToken = session.accessToken;
 
 		const bookingData = {
-			dateFrom: signInDate.toISOString(),
-			dateTo: signOutDate.toISOString(),
+			dateFrom: signInDate?.toISOString(),
+			dateTo: signOutDate?.toISOString(),
 			guests: guests,
-			venueId: id, // Assuming the 'id' prop passed to CalendarBooking is the venueId you want.
+			venueId: id,
 		};
+
+		// console.log(bookingData, accessToken);
 
 		createBooking(bookingData, accessToken);
 	};
@@ -63,7 +65,7 @@ const CalendarBooking = ({ venue, id }) => {
 		<>
 			<form
 				onSubmit={handleSubmit}
-				className='flex flex-col gap-2 p-4 md:w-2/3 lg:w-1/3 mx-auto'
+				className='flex flex-col gap-2 p-4 md:w-2/3 mx-auto'
 			>
 				<div className='flex gap-2'>
 					<Button
@@ -100,6 +102,7 @@ const CalendarBooking = ({ venue, id }) => {
 						</PopoverTrigger>
 						<PopoverContent className='w-auto p-0 bg-black'>
 							<Calendar
+								fromDate={new Date()}
 								mode='single'
 								selected={signInDate}
 								onSelect={setsignInDate}
@@ -128,6 +131,11 @@ const CalendarBooking = ({ venue, id }) => {
 						</PopoverTrigger>
 						<PopoverContent className='p-0 bg-black'>
 							<Calendar
+								fromDate={
+									signInDate
+										? new Date(signInDate.getTime() + 24 * 60 * 60 * 1000)
+										: new Date()
+								}
 								mode='single'
 								selected={signOutDate}
 								onSelect={setSignOutDate}

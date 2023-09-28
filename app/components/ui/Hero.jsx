@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Lottie from 'lottie-react';
 import { useSession } from 'next-auth/react';
 
-import animationData from '../../../public/animation.json';
+import animationData from '@/public/animation.json';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -56,7 +56,7 @@ const Hero = () => {
 							</h1>
 							<p>Discover new experiences and manage your bookings.</p>
 							<Button>
-								<Link href='/account'>View my bookings</Link>
+								<Link href={'/account/my-bookings'}>View my bookings</Link>
 							</Button>
 						</>
 					)
