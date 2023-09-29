@@ -29,6 +29,7 @@ import { signOut, useSession } from 'next-auth/react';
 
 import Logo from '@/public/logo-no-background.png';
 import { redirect } from 'next/navigation';
+import { SearchInput } from './SearchInput';
 
 export default function Navbar() {
 	const { data: session, status } = useSession();
@@ -36,17 +37,6 @@ export default function Navbar() {
 	const handleLogout = async () => {
 		await signOut();
 	};
-
-	function SearchBar() {
-		return (
-			<div className='flex items-center space-x-2'>
-				<Input type='text' className='px-3 py-2 w-80' placeholder='Search...' />
-				<Button className='px-3 py-2'>
-					<Link href={'/search?'}>Search</Link>
-				</Button>
-			</div>
-		);
-	}
 
 	return (
 		<nav className='flex justify-between items-center px-3 lg:px-12 py-6 bg-lightPrimary'>
@@ -57,8 +47,8 @@ export default function Navbar() {
 					alt='Holidaze Logo'
 				/>
 			</Link>
-			{/* <SearchBar /> */}
 			<div className='flex gap-6'>
+				<SearchInput />
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						{status === 'loading' ? (

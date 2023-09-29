@@ -4,23 +4,16 @@ import VenueCard from '../components/VenueCard';
 
 const RenderResults = ({ venues }) => {
 	const searchParams = useSearchParams();
-	const city = searchParams.get('city');
-	// const checkIn = searchParams.get('checkInDate');
-	// const checkOut = searchParams.get('checkOutDate');
-	const guests = searchParams.get('guests');
+	const terms = searchParams.get('search_query');
+
+	const lowercasedTerms = terms?.toLowerCase();
 
 	const filteredVenues = venues.filter((venue) => {
-		// Log the cities being compared
-		console.log(
-			'API City:',
-			venue.location.city.trim().toLowerCase(),
-			'Query City:',
-			city.trim().toLowerCase()
-		);
-
 		return (
-			venue.location.city.trim().toLowerCase() === city.trim().toLowerCase() &&
-			venue.maxGuests >= Number(guests)
+			venue.name.toLowerCase().includes(lowercasedTerms) ||
+			venue.description.toLowerCase().includes(lowercasedTerms) ||
+			venue.location.city.toLowerCase().includes(lowercasedTerms) ||
+			venue.location.country.toLowerCase().includes(lowercasedTerms)
 		);
 	});
 
@@ -29,7 +22,7 @@ const RenderResults = ({ venues }) => {
 			{filteredVenues.length > 0 ? (
 				filteredVenues.map((venue) => (
 					<div
-						key={venue.name}
+						key={venue.id}
 						className='col-span-4 md:col-span-2 lg:col-span-1 bg-lightestPrimary rounded-md'
 					>
 						<VenueCard venue={venue} />

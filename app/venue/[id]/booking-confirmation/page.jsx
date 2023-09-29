@@ -18,10 +18,10 @@ const BookingConfirmation = () => {
 		<div className='flex justify-center items-center'>
 			{isAnimationComplete ? (
 				// Render the content once the animation is complete
-				<div className='text-center flex flex-col items-center gap-3'>
+				<div className='text-center text-xl flex flex-col items-center gap-3'>
 					<p>Thank you for making the reservation!</p>
 					<p>We hope you will enjoy your stay</p>
-					<Button className='w-2/3'>
+					<Button className='w-2/3' variant='outline'>
 						<Link href={'/account/my-bookings'}>Manage bookings</Link>
 					</Button>
 				</div>

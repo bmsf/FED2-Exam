@@ -43,7 +43,7 @@ const LoginPage = () => {
 		} else {
 			toast.error('Wrong credentials. Please try again');
 		}
-		setIsSubmitting(true);
+		setIsSubmitting(false);
 	};
 
 	return (
