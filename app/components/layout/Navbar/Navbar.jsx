@@ -62,8 +62,12 @@ export default function Navbar() {
 						{status === 'loading' ? (
 							<Skeleton className='w-8 h-8 bg-gray-300 rounded-full' />
 						) : session && session.avatar ? (
-							<Avatar className='h-8 w-8 cursor-pointer' alt={session.name}>
-								<AvatarImage src={session.avatar} />
+							<Avatar className='h-8 w-8 cursor-pointer'>
+								<AvatarImage
+									src={session.avatar}
+									alt={session.name}
+									aria-label='User menu'
+								/>
 								<div className='flex items-center justify-center w-8 h-8 bg-white rounded-full border border-gray-300'>
 									<User className='text-lightPrimary cursor-pointer w-5 h-5' />
 								</div>
