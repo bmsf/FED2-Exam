@@ -1,9 +1,5 @@
-import { getServerSession } from 'next-auth';
-import { authOptions } from 'next-auth';
-
 import Hero from './components/ui/Hero';
 import Venues from './components/ui/Venues';
-import { API_HOLIDAZE_URL } from './api/constants';
 
 export default async function Home() {
 	return (

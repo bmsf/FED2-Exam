@@ -1,4 +1,4 @@
-import RenderResult from './RenderResults';
+import RenderResult from '../components/RenderResults';
 import FilterMenu from './FilterMenu';
 
 const SearchResults = async () => {

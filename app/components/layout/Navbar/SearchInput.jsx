@@ -49,12 +49,7 @@ export function SearchInput() {
 										{...field}
 										className='rounded-full pl-12 h-10'
 									/>
-									<button
-										type='submit'
-										className='absolute left-0 top-1/2 transform -translate-y-1/2 pl-3' // Absolute positioning inside the relative div
-									>
-										<Search />
-									</button>
+									<Search className='absolute left-0 top-1/2 transform -translate-y-1/2 ml-3' />
 								</div>
 							</FormControl>
 							<FormMessage />

@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const LoginPage = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,6 +43,7 @@ const LoginPage = () => {
 			console.log(result);
 		} else {
 			toast.error('Wrong credentials. Please try again');
+			console.log(result, result.error);
 		}
 		setIsSubmitting(false);
 	};
@@ -75,7 +77,12 @@ const LoginPage = () => {
 							</FormItem>
 						)}
 					/>
-					<SpinnerButton type='submit' name='Next' state={isSubmitting} />
+					<SpinnerButton
+						type='submit'
+						name='Next'
+						state={isSubmitting}
+						className='w-full rounded-full h-12'
+					/>
 					<p>
 						Don&apos;t have an account?
 						<Link href={'/register'} className='font-extrabold ml-1'>

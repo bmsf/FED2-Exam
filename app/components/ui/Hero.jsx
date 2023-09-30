@@ -30,7 +30,7 @@ const Hero = () => {
 							</h1>
 							<div className='flex flex-col items-center'>
 								<div className='w-64'>
-									<Button className='w-full'>
+									<Button className='w-full' asChild>
 										<Link href='/venuemanager/my-venues'>Manage Venues</Link>
 									</Button>
 								</div>
@@ -40,7 +40,7 @@ const Hero = () => {
 									<div className='flex-1 border-b' />
 								</div>
 								<div className='w-64'>
-									<Button variant='outline' className='w-full'>
+									<Button variant='outline' className='w-full' asChild>
 										<Link href='/venuemanager/create-venue'>
 											Create a new one
 										</Link>
@@ -55,7 +55,7 @@ const Hero = () => {
 								Welcome back, {session.user.name}!
 							</h1>
 							<p>Discover new experiences and manage your bookings.</p>
-							<Button>
+							<Button asChild>
 								<Link href={'/account/my-bookings'}>View my bookings</Link>
 							</Button>
 						</>

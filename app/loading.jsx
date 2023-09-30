@@ -3,16 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const Loading = () => {
 	return (
 		<>
-			{/* Skeleton for Hero component */}
-			<div className='flex flex-col lg:flex-row items-center justify-center min-h-screen w-full p-4 lg:p-0 gap-4'>
-				{/* <div className='w-full md:w-3/4 lg:w-1/4 mx-auto'>
-					<Skeleton className='h-60 w-60 rounded-full mx-auto' />
-				</div>
-				<div className='space-y-2 w-full md:w-3/4 lg:w-auto mx-auto'>
-					<Skeleton className='h-4 w-[250px] mx-auto' />
-					<Skeleton className='h-4 w-[200px] mx-auto' />
-				</div> */}
-			</div>
+			<div className='flex flex-col lg:flex-row items-center justify-center min-h-screen w-full p-4 lg:p-0 gap-4'></div>
 
 			{/* Skeleton for Venue Listing */}
 			<div className='m-12 rounded-md grid grid-cols-4 gap-12'>

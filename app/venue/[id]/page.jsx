@@ -1,13 +1,14 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { FaUserGroup, FaStar } from 'react-icons/fa6';
 import Image from 'next/image';
-import VenueDetails from './VenueDetails';
-import CalendarBooking from './CalendarBooking';
+import VenueDetails from '../../components/VenueDetails';
+import CalendarBooking from '../../components/CalendarBooking';
 
 const Venue = async ({ params: { id } }) => {
 	const data = await fetch(
 		`https://api.noroff.dev/api/v1/holidaze/venues/${id}/?_bookings=true`
 	);
+
 	const venue = await data.json();
 
 	return (
