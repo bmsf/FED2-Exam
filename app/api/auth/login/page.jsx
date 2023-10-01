@@ -12,12 +12,16 @@ import {
 	FormControl,
 	FormField,
 	FormItem,
-	FormLabel,
 	FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+
+export const metadata = {
+	title: 'Login to Holidaze',
+	description:
+		'Access your Holidaze account securely. Dive back into your venue searches, bookings, and enjoy a tailored experience. Sign in now for a seamless journey.',
+};
 
 const LoginPage = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);

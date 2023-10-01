@@ -1,8 +1,13 @@
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { FaUserGroup, FaStar } from 'react-icons/fa6';
 import Image from 'next/image';
 import VenueDetails from '../../components/VenueDetails';
 import CalendarBooking from '../../components/CalendarBooking';
+
+export const metadata = {
+	title: 'Venue Details & Booking | Holidaze',
+	description:
+		'Explore the specifics of your chosen venue with Holidaze. View photos, check availability, and book your preferred dates all in one place. Secure your spot today!',
+};
 
 const Venue = async ({ params: { id } }) => {
 	const data = await fetch(

@@ -4,6 +4,12 @@ import Link from 'next/link';
 import ProfileMenu from '@/app/components/VenueManagerMenu';
 import { Button } from '@/components/ui/button';
 
+export const metadata = {
+	title: 'Venue Manager Dashboard | Holidaze',
+	description:
+		'Manage your Holidaze profile and listings effortlessly. Update your avatar, add new venues, or make modifications to existing ones. Your centralized hub for all venue management tasks.',
+};
+
 const ProfileLayout = async ({ children }) => {
 	const session = await getServerSession(authOptions);
 

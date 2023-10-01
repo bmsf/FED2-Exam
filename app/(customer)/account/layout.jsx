@@ -2,8 +2,13 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-
 import AccountMenu from '../../components/AccountMenu';
+
+export const metadata = {
+	title: 'User Dashboard | Holidaze',
+	description:
+		'Your personal Holidaze hub. Update your profile, review your bookings, manage preferences, and customize your Holidaze experience. Everything you need, all in one place.',
+};
 
 const ProfileLayout = async ({ children }) => {
 	const session = await getServerSession(authOptions);
