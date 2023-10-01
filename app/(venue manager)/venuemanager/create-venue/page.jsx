@@ -51,6 +51,7 @@ const CreateVenue = () => {
 			description: '',
 			price: '',
 			maxGuests: '',
+			media: [],
 			items: [],
 			country: '',
 			address: '',
@@ -62,7 +63,8 @@ const CreateVenue = () => {
 	async function onSubmit(values, e) {
 		e.preventDefault();
 		setIsSubmitting(true);
-		const { address, city, zip, country, name, description, items } = values;
+		const { address, city, zip, country, name, description, items, media } =
+			values;
 
 		const price = Number(values.price);
 		const maxGuests = Number(values.maxGuests);
@@ -79,6 +81,7 @@ const CreateVenue = () => {
 			price,
 			maxGuests,
 			meta,
+			media,
 			location: {
 				address,
 				city,
@@ -88,7 +91,7 @@ const CreateVenue = () => {
 		};
 
 		createVenue(formattedValues, session.accessToken);
-		setIsSubmitting(true);
+		setIsSubmitting(false);
 	}
 
 	return (
@@ -132,6 +135,18 @@ const CreateVenue = () => {
 										placeholder='Maximum Guests'
 										{...field}
 									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name='media'
+						render={({ field }) => (
+							<FormItem>
+								<FormControl>
+									<Input placeholder='Gallery Images (optional)' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -240,7 +255,7 @@ const CreateVenue = () => {
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input placeholder='Zip' {...field} />
+									<Input type={'number'} placeholder='Zip' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

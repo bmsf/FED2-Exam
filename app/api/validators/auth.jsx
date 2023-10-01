@@ -54,12 +54,11 @@ export const createVenueSchema = z.object({
 	maxGuests: z.coerce.number().positive({
 		message: 'Price must be a number above 0',
 	}),
+	media: z.array(z.string()).optional(),
 	description: z.string().min(2, {
 		message: 'Description name must be at least 2 characters.',
 	}),
-	items: z.array(z.string()).refine((value) => value.some((item) => item), {
-		message: 'You have to select at least one item.',
-	}),
+	items: z.array(z.string()).optional(),
 	country: z.string().min(2, {
 		message: 'Description name must be at least 2 characters.',
 	}),

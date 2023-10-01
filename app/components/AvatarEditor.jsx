@@ -101,14 +101,14 @@ const AvatarEditor = ({ avatar, name, accessToken }) => {
 						<Input
 							id='name'
 							placeholder='https://url.com/image.jpg'
-							className='col-span-3 text-gray-400'
+							className='col-span-3 bg-primary'
 							onChange={(e) => (imageLink.current = e.target.value)}
 						/>
 					</div>
 				</div>
 
 				<DialogFooter>
-					<Button type='button' className='bg-texas' onClick={handleOnSubmit}>
+					<Button variant='outline' onClick={handleOnSubmit}>
 						Save changes
 					</Button>
 				</DialogFooter>

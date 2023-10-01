@@ -1,7 +1,7 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
-import ProfileMenu from '@/app/components/ProfileMenu';
+import ProfileMenu from '@/app/components/VenueManagerMenu';
 import { Button } from '@/components/ui/button';
 
 const ProfileLayout = async ({ children }) => {
@@ -20,7 +20,7 @@ const ProfileLayout = async ({ children }) => {
 
 	return (
 		<div className='min-h-screen p-6 mx-auto w-full'>
-			<div className='mb-6'>
+			<div className='mb-6 mx-12'>
 				<h1 className='text-3xl'>Account</h1>
 			</div>
 			<ProfileMenu />

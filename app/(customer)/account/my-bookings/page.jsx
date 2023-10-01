@@ -18,7 +18,7 @@ const MyBookings = async ({ params: { id } }) => {
 	const { accessToken, name } = session;
 
 	const data = await fetch(
-		`https://api.noroff.dev/api/v1/holidaze/profiles/${name}/bookings`,
+		`https://api.noroff.dev/api/v1/holidaze/profiles/${name}/bookings?_venue=true`,
 		{
 			method: 'GET',
 			headers: {
@@ -35,7 +35,7 @@ const MyBookings = async ({ params: { id } }) => {
 			{bookings.map((booking) => (
 				<div
 					key={booking.id}
-					className='col-span-4 md:col-span-2 lg:col-span-1  rounded-md'
+					className='col-span-4 md:col-span-2 lg:col-span-1 rounded-md'
 				>
 					<Card className='bg-transparent'>
 						<CardHeader>
@@ -48,12 +48,21 @@ const MyBookings = async ({ params: { id } }) => {
 							</CardDescription>
 							<CardDescription>Guests: {booking.guests}</CardDescription>
 						</CardHeader>
-						<CardFooter className='flex justify-between'>
-							{/* <AlertDialogComponent venue={venue} accessToken={accessToken} />
-							<Button variant='outline' asChild>
-								<Link href={`/account/edit-venue/${venue.id}`}>Edit</Link>
-							</Button> */}
-						</CardFooter>
+
+						<CardContent>
+							<h3 className='text-xl font-bold'>Venue Details</h3>
+							<CardDescription>Name: {booking.venue.name}</CardDescription>
+							<CardDescription>
+								Description: {booking.venue.description}
+							</CardDescription>
+							<CardDescription>Price: ${booking.venue.price}</CardDescription>
+							<CardDescription>
+								Max Guests: {booking.venue.maxGuests}
+							</CardDescription>
+							<CardDescription>Rating: {booking.venue.rating}</CardDescription>
+						</CardContent>
+
+						<CardFooter className='flex justify-between'></CardFooter>
 					</Card>
 				</div>
 			))}

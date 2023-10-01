@@ -34,6 +34,7 @@ const EditVenue = ({ params: { id } }) => {
 			description: '',
 			price: '',
 			maxGuests: '',
+			media: [],
 			items: [],
 			country: '',
 			address: '',
@@ -89,9 +90,7 @@ const EditVenue = ({ params: { id } }) => {
 			}
 		};
 
-		// Check if session is available
 		if (session) {
-			// Call the async function
 			fetchData();
 		}
 	}, [session, id, form]);
@@ -118,7 +117,8 @@ const EditVenue = ({ params: { id } }) => {
 	async function onSubmit(values, e) {
 		e.preventDefault();
 		setIsSubmitting(true);
-		const { address, city, zip, country, name, description, items } = values;
+		const { address, city, zip, country, name, description, items, media } =
+			values;
 
 		const price = Number(values.price);
 		const maxGuests = Number(values.maxGuests);
@@ -135,6 +135,7 @@ const EditVenue = ({ params: { id } }) => {
 			price,
 			maxGuests,
 			meta,
+			media,
 			location: {
 				address,
 				city,
@@ -144,7 +145,7 @@ const EditVenue = ({ params: { id } }) => {
 		};
 
 		updateVenue(id, session.accessToken, formattedValues);
-		setIsSubmitting(true);
+		setIsSubmitting(false);
 	}
 
 	return (
@@ -188,6 +189,19 @@ const EditVenue = ({ params: { id } }) => {
 										placeholder='Maximum Guests'
 										{...field}
 									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+
+					<FormField
+						control={form.control}
+						name='media'
+						render={({ field }) => (
+							<FormItem>
+								<FormControl>
+									<Input placeholder='Gallery Images (optional)' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

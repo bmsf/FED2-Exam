@@ -31,15 +31,16 @@ const ViewBookings = async ({ params: { id } }) => {
 			) : (
 				<div className='space-y-8 mt-10'>
 					{bookings.map((booking) => (
-						<div key={booking.id} className='flex items-center'>
-							<div className='ml-4 space-y-1'>
+						<div
+							key={booking.id}
+							className='flex justify-between items-center border p-6'
+						>
+							<div className='space-y-1'>
 								<p className='text-sm font-medium leading-none'>{booking.id}</p>
 							</div>
-							<div className='ml-4 space-y-1'>
+							<div className='space-y-1 ml-6'>
 								<p>Number of guests: {booking.guests}</p>
 							</div>
-
-							{/* Replace booking.price with the actual field if it exists */}
 							<div className='ml-auto font-medium'>
 								<p className='text-sm text-muted-foreground'>
 									{new Date(booking.dateFrom).toLocaleDateString()} -{' '}

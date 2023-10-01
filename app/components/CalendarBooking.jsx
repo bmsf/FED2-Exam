@@ -15,7 +15,7 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover';
 import Link from 'next/link';
-
+import SelectInput from './SelectInput';
 import createBooking from '@/app/api/createBooking';
 
 const CalendarBooking = ({ venue, id }) => {
@@ -56,8 +56,6 @@ const CalendarBooking = ({ venue, id }) => {
 			venueId: id,
 		};
 
-		// console.log(bookingData, accessToken);
-
 		createBooking(bookingData, accessToken);
 	};
 
@@ -65,9 +63,9 @@ const CalendarBooking = ({ venue, id }) => {
 		<>
 			<form
 				onSubmit={handleSubmit}
-				className='flex flex-col gap-2 p-4 md:w-2/3 mx-auto'
+				className='flex flex-col gap-2 p-12 mx-auto '
 			>
-				<div className='flex gap-2'>
+				{/* <div className='flex gap-2'>
 					<Button
 						variant={'outline'}
 						className={cn(
@@ -85,7 +83,8 @@ const CalendarBooking = ({ venue, id }) => {
 						onChange={(e) => setGuests(parseInt(e.target.value, 10))}
 						className='w-[80px] text-center bg-lightestPrimary border-0'
 					/>
-				</div>
+				</div> */}
+				<SelectInput />
 				<div className='flex gap-2'>
 					<Popover>
 						<PopoverTrigger asChild>
