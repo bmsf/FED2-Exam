@@ -47,7 +47,7 @@ export default function Navbar() {
 	};
 
 	return (
-		<nav className='flex justify-between items-center px-3 lg:px-12 py-6 bg-lightPrimary'>
+		<nav className='flex justify-between items-center px-3 lg:px-12 py-2 bg-lightPrimary'>
 			<Link href={'/'}>
 				<Image
 					src={Logo}
@@ -55,7 +55,7 @@ export default function Navbar() {
 					alt='Holidaze Logo'
 				/>
 			</Link>
-			<div className='flex gap-6'>
+			<div className='flex gap-6 items-center'>
 				<SearchInput />
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>

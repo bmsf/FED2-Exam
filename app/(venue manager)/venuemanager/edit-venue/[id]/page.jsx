@@ -14,13 +14,14 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 
-import { FaAngleLeft } from 'react-icons/fa6';
 import { useForm } from 'react-hook-form';
 import { createVenueSchema } from '@/app/api/validators/auth';
 import { useSession } from 'next-auth/react';
 
 import updateVenue from '@/app/api/updateVenue';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { fetchFromApi } from '@/app/utils/api';
 
 const EditVenue = ({ params: { id } }) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,6 +65,7 @@ const EditVenue = ({ params: { id } }) => {
 					const amenities = Object.keys(data.meta).filter(
 						(key) => data.meta[key]
 					);
+					const { media } = data;
 					const { address, city, country, zip } = data.location;
 					setInitialData(data);
 
@@ -72,6 +74,7 @@ const EditVenue = ({ params: { id } }) => {
 						price: data.price,
 						maxGuests: data.maxGuests,
 						description: data.description,
+						media: media,
 						items: amenities,
 						country: country,
 						address: address,
@@ -79,11 +82,17 @@ const EditVenue = ({ params: { id } }) => {
 						zip: zip,
 					});
 				} else {
+					toast.error(
+						'Something went wrong while trying to get information about your venue'
+					);
 					console.log(response);
 					console.log(id);
 					console.log(session.accessToken);
 				}
 			} catch (error) {
+				toast.error(
+					'Something went wrong while trying to get information about your venue'
+				);
 				console.log(error);
 				console.log(id);
 				console.log(session.accessToken);
@@ -129,6 +138,8 @@ const EditVenue = ({ params: { id } }) => {
 			meta[item] = true;
 		});
 
+		const mediaArray = values.media.split(/\s*,\s*/);
+
 		const formattedValues = {
 			name,
 			description,
@@ -142,6 +153,7 @@ const EditVenue = ({ params: { id } }) => {
 				zip,
 				country,
 			},
+			media: mediaArray,
 		};
 
 		updateVenue(id, session.accessToken, formattedValues);

@@ -1,6 +1,5 @@
 import RenderResult from '../components/RenderResults';
-import FilterMenu from './FilterMenu';
-
+	
 const SearchResults = async () => {
 	const response = await fetch('https://api.noroff.dev/api/v1/holidaze/venues');
 	const venues = await response.json();

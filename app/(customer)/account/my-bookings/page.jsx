@@ -1,6 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
-import Link from 'next/link';
+
 import {
 	Card,
 	CardContent,
@@ -11,24 +11,18 @@ import {
 } from '@/components/ui/card';
 
 import { Button } from '@/components/ui/button';
+import { fetchFromApi } from '@/app/utils/api';
 
-const MyBookings = async ({ params: { id } }) => {
+const MyBookings = async () => {
 	const session = await getServerSession(authOptions);
 
 	const { accessToken, name } = session;
 
-	const data = await fetch(
-		`https://api.noroff.dev/api/v1/holidaze/profiles/${name}/bookings?_venue=true`,
-		{
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
+	const method = 'GET';
 
-	const bookings = await data.json();
+	const action = `/profiles/${name}/bookings?_venue=true`;
+
+	const bookings = await fetchFromApi(method, accessToken, action);
 
 	return (
 		<section className='m-12 rounded-md grid grid-cols-4 gap-12'>

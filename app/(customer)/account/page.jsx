@@ -1,26 +1,19 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
-import { AiOutlineUser, AiOutlineCamera } from 'react-icons/ai'; // Import icons
-import Link from 'next/link'; // Import Link from Next.js
+
 import AvatarEditor from '../../components/AvatarEditor';
+import { fetchFromApi } from '@/app/utils/api';
 
 const Profile = async () => {
 	const session = await getServerSession(authOptions);
 
 	const { accessToken, name } = session;
 
-	const data = await fetch(
-		`https://api.noroff.dev/api/v1/holidaze/profiles/${name}`,
-		{
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
+	const method = 'GET';
 
-	const res = await data.json();
+	const action = `/profiles/${name}`;
+
+	const res = await fetchFromApi(method, accessToken, action);
 
 	const username = res.name;
 

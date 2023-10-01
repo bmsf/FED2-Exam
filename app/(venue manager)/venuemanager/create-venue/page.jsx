@@ -63,8 +63,7 @@ const CreateVenue = () => {
 	async function onSubmit(values, e) {
 		e.preventDefault();
 		setIsSubmitting(true);
-		const { address, city, zip, country, name, description, items, media } =
-			values;
+		const { address, city, zip, country, name, description, items } = values;
 
 		const price = Number(values.price);
 		const maxGuests = Number(values.maxGuests);
@@ -75,19 +74,21 @@ const CreateVenue = () => {
 			meta[item] = true;
 		});
 
+		const mediaArray = values.media.split(/\s*,\s*/);
+
 		const formattedValues = {
 			name,
 			description,
 			price,
 			maxGuests,
 			meta,
-			media,
 			location: {
 				address,
 				city,
 				zip,
 				country,
 			},
+			media: mediaArray,
 		};
 
 		createVenue(formattedValues, session.accessToken);
