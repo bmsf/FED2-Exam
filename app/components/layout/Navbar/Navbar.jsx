@@ -66,7 +66,7 @@ export default function Navbar() {
 								<AvatarImage
 									src={session.avatar}
 									alt={session.name}
-									aria-label='User menu'
+									aria-label='User avatar'
 								/>
 								<div className='flex items-center justify-center w-8 h-8 bg-white rounded-full border border-gray-300'>
 									<User className='text-lightPrimary cursor-pointer w-5 h-5' />
