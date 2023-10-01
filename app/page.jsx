@@ -1,7 +1,11 @@
-import Image from 'next/image';
+import Hero from './components/ui/Hero';
+import Venues from './components/ui/Venues';
 
-export default function Home() {
+export default async function Home() {
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'></main>
+		<main className='flex flex-col min-h-screen'>
+			<Hero />
+			<Venues />
+		</main>
 	);
 }
