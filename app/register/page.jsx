@@ -22,12 +22,6 @@ import Link from 'next/link';
 import registerAuth from '../api/auth/registerAuth';
 import { SpinnerButton } from '@/app/components/SpinnerButton';
 
-export const metadata = {
-	title: 'Register with Holidaze',
-	description:
-		'Join the Holidaze community today! Register to unlock exclusive deals, get personalized venue recommendations, and streamline your booking experience.',
-};
-
 const RegisterPage = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const form = useForm({
